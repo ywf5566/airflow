@@ -33,7 +33,7 @@ dag = DAG(
 # ==========================================================tasks======================================================
 task1 = BashOperator(
     task_id="设置唯一task-id",
-    bash_command="执行任务的bash命令",
+    bash_command="执行任务的bash命令,比如sh执行脚本等",
     dag=dag)
 
 task2 = SSHOperator(

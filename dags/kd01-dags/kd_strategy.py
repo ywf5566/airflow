@@ -27,7 +27,11 @@ v3_strategy_daily_task = SSHOperator(task_id="v3_strategy_daily_task", ssh_conn_
 job_end_task = SSHOperator(task_id="job_end_task", ssh_conn_id="kd01_keydriver",command="sh /usr/lib/carter/kd_strategy/script/monitor_end_task.sh dev ", dag=dag)
 
 # ==========================================================dependencies================================================
-job_start_task >> block_indicator_task >> stock_indicator_task >> strategy_report_week >> job_end_task
-job_start_task >> v3_model_rsync >> job_end_task
-job_start_task >> indicator_daily_task >> job_end_task
-job_start_task >> v3_model_rsync >> v3_src_strategy_daily_task >> v3_strategy_daily_task >> job_end_task
+job_start_task >> [v3_dk_daily_task, block_indicator_task, indicator_daily_task, v3_model_rsync]
+v3_model_rsync >> [v3_src_strategy_daily_task]
+indicator_daily_task >> [job_end_task]
+v3_dk_daily_task >> [job_end_task]
+block_indicator_task >> [stock_indicator_task]
+v3_strategy_daily_task >> [job_end_task]
+v3_src_strategy_daily_task >> [v3_strategy_daily_task]
+stock_indicator_task >> strategy_report_week >> job_end_task

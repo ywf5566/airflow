@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
+from airflow.operators.dagrun_operator import TriggerDagRunOperator
 from datetime import datetime
 
 default_args = {
@@ -10,8 +11,9 @@ dag = DAG(
     'KD-FACTOR-L2-AND-NORMAL',
     default_args=default_args,
     description='Level2 因子和普通因子训练',
-    schedule_interval='40 18 * * *',
-    start_date=datetime(2020, 12, 21, 18, 40)
+    schedule_interval='20 18 * * *',
+    catchup=False,
+    start_date=datetime(2020, 12, 24, 18, 0)
 )
 # ==========================================================tasks=======================================================
 check_qsdata = BashOperator(task_id="check_qsdata", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-repo-dep-check.sh check_qsdata", dag=dag)
@@ -57,7 +59,7 @@ fac_daily_l2c_5_d = BashOperator(task_id="fac_daily_l2c_5_d", bash_command="sh /
 fac_daily_fastmadivslowma_20_90 = BashOperator(task_id="fac_daily_fastmadivslowma_20_90", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 2616", dag=dag)
 fac_daily_interday_close = BashOperator(task_id="fac_daily_interday_close", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 3982302", dag=dag)
 fac_daily_random_daily_factor = BashOperator(task_id="fac_daily_random_daily_factor", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 1055903", dag=dag)
-fac_daily_h2l_60_d = BashOperator(task_id="fac_daily_h2l_60_d", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 2607", dag=dag)
+fac_daily_h2l_60_d = BashOperator(task_id="fac_daily_h2l_60_d", bash_command="sh  /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 2607", dag=dag)
 fac_daily_h2c_60_d = BashOperator(task_id="fac_daily_h2c_60_d", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 2604", dag=dag)
 fac_daily_hc2cl_120_d = BashOperator(task_id="fac_daily_hc2cl_120_d", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 2611", dag=dag)
 fac_daily_l2c_60_d = BashOperator(task_id="fac_daily_l2c_60_d", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 2613", dag=dag)
@@ -205,7 +207,12 @@ fac_daily_l2_small_activebuy_turnover_closecorr10 = BashOperator(task_id="fac_da
 fac_daily_l2_actnetinflow_turnover_proptinall_openclose_delta = BashOperator(task_id="fac_daily_l2_actnetinflow_turnover_proptinall_openclose_delta", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 3724836", dag=dag)
 fac_daily_l2_contrade_tunrover_activebuy_propt_tsz20 = BashOperator(task_id="fac_daily_l2_contrade_tunrover_activebuy_propt_tsz20", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 3885605", dag=dag)
 
-
+trigger_deap_and_check = TriggerDagRunOperator(
+    task_id='trigger_deap_and_check',
+    trigger_dag_id='KD-FACTOR-DEAP-AND-CHECK',
+    trigger_rule='all_done',
+    dag=dag
+)
 # =========================================================dependencies=================================================
 fac_daily_barradastd_252_42_0 >> [fac_daily_barra_residvltl_1]
 
@@ -302,7 +309,7 @@ fac_daily_l2_actbsdelta_ordercnt >> [fac_daily_l2_madsmall_netinflow_turnover_pr
                                      fac_daily_l2_small_actnetinflow_turnover_proptinall_m10,
                                      fac_daily_l2_madsmall_activebuy_turnover_closecorr10,
                                      fac_daily_l2_madl_actntfl_to_proptinall_msdelta,
-                                     fac_daily_l2_small_activebuy_turnover_closecorr10]
+                                     fac_daily_l2_small_activebuy_turnover_closecorr10] >> trigger_deap_and_check
 
 check_qsdata >> [fac_daily_alpha_zs_8, fac_daily_fastmadivslowma_20_60, fac_daily_h2l_120_d,
                  fac_daily_netprofit_grow_rate, fac_daily_close, fac_daily_alpha_zs_1, fac_daily_alpha_zs_2,

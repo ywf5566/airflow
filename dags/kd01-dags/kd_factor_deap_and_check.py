@@ -12,7 +12,7 @@ dag = DAG(
     'KD-FACTOR-DEAP-AND-CHECK',
     default_args=default_args,
     description='因子',
-    schedule_interval='40 18 * * *',
+    schedule_interval=None,
     start_date=datetime(2020, 12, 21, 18, 40)
 )
 # ==========================================tasks==================================================

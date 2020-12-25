@@ -7,7 +7,7 @@ from airflow.operators.bash_operator import BashOperator
 default_args = {'owner': 'afroot04'}
 dag = DAG('synchronize_etf_quota_11pm',
           default_args=default_args,
-          schedule_interval='None',
+          schedule_interval=None,
           catchup=False,
           start_date=datetime(2020, 12, 24, 16, 0))
           

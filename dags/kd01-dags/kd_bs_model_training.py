@@ -10,7 +10,7 @@ dag = DAG(
     'kd_bs_model_training',
     default_args=default_args,
     description='kd_bs_model_training',
-    schedule_interval='* 23 30 * *',
+    schedule_interval='0 23 30 * *',
     start_date=datetime(2020, 12, 1, 23, 0)
 )
 # ==========================================================tasks======================================================

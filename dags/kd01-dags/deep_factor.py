@@ -2,6 +2,7 @@
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
 from datetime import datetime
+
 default_args = {
     'owner': 'kd01_factor_repo'
 }

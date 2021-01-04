@@ -1,0 +1,237 @@
+globals:
+    userid: jiaguo
+
+db:
+    kd03:
+      uid: dbsync
+      pwd: EEE@qxxtg123
+      host: kd03
+      db_name: kdbase
+      port: 3306
+      db_type: mysql
+    jkdbase:
+      uid: admin
+      pwd: Intel@123
+      host: 10.1.0.133
+      db_name: kdbase
+      port: 3306
+      db_type: mysql
+    syncbase:
+      uid: root
+      pwd: Hadoop1231
+      host: localhost
+      db_name: syncbase
+      port: 3306
+      db_type: mysql
+    mstest:
+      uid: sa
+      pwd: Jiaguo@506
+      host: 10.1.0.222
+      db_name: mstest
+      port: 54600
+      db_type: sqlserver
+    emwind:
+      uid: KDReadOnly@emoney.cn
+      pwd: "0k#eXv40LVaz"
+      host: 180.153.25.240
+      db_name: WIND
+      port: 61433
+      db_type: sqlserver
+    kdbase:
+      uid: dbsync
+      pwd: EEE@qxxtg123
+      host: kd02
+      db_name: kdbase #dadsf
+      port: 3306
+      db_type: mysql
+    kdbase_kd01:
+      uid: dbsync
+      pwd: EEE@qxxtg123
+      host: kd01
+      db_name: kdbase #dadsf
+      port: 3306
+      db_type: mysql
+    kdbase_kd03:
+      uid: dbsync
+      pwd: EEE@qxxtg123
+      host: kd03
+      db_name: kdbase #dadsf
+      port: 3306
+      db_type: mysql
+    keydriverdb_prod_kd01:
+      uid: dbsync
+      pwd: EEE@qxxtg123
+      host: kd01
+      db_name: keydriverdb_prod_kd01_test #dadsf
+      port: 3306
+      db_type: mysql
+    keydriverdb_prod:
+      uid: dbsync
+      pwd: EEE@qxxtg123
+      host: kd02
+      db_name: keydriverdb_prod #dadsf
+      port: 3306
+      db_type: mysql
+    embase:
+      uid: KDReadOnly@emoney.cn
+      pwd: "0k#eXv40LVaz"
+      host: 180.153.25.240
+      db_name: embase
+      port: 61433
+      db_type: sqlserver
+    erdb:
+      uid: dbsync
+      pwd: EEE@qxxtg123
+      host: kd02
+      db_name: erdb #dadsf
+      port: 3306
+      db_type: mysql
+    wind2:
+      uid: KDReadOnly@emoney.cn
+      pwd: "0k#eXv40LVaz"
+      host: 180.153.25.240
+      db_name: WIND
+      port: 61433
+      db_type: sqlserver
+    kdwind:
+      uid: sa
+      pwd: Jiaguo@506
+      host: 10.1.0.222
+      db_name: wind
+      port: 54600
+      db_type: sqlserver
+    kdwind2:
+      uid: sa
+      pwd: Jiaguo@506
+      host: 10.1.0.222
+      db_name: WIND2018
+      port: 54600
+      db_type: sqlserver
+    emsync:
+      uid: dbsync
+      pwd: EEE@qxxtg123
+      host: kd02
+      db_name: emsync #dadsf
+      port: 3306
+      db_type: mysql
+    factor:
+      uid: dbsync
+      pwd: EEE@qxxtg123
+      host: kd02
+      db_name: factor #dadsf
+      port: 3306
+      db_type: mysql
+    factor_data:
+      uid: dbsync
+      pwd: EEE@qxxtg123
+      host: kd02
+      db_name: factor #dadsf
+      port: 3306
+      db_type: mysql
+    factor_source:
+      uid: admin
+      pwd: Intel@123
+      host: 10.1.0.162
+      db_name: mktfeaturetest
+      port: 5432
+      db_type: postgresql
+    db_wind_2:
+      uid: KDReadOnly@emoney.cn
+      pwd: "0k#eXv40LVaz"
+      host: 222.66.234.242
+      db_name: WIND
+      port: 1433
+      db_type: sqlserver
+    kdbase_local:
+      uid: root
+      pwd: Hadoop123
+      host: localhost
+      db_name: kdbase #dadsf
+      port: 3306
+      db_type: mysql
+    juyuan:
+      uid: yyj_jydb
+      pwd: "jydb"
+      host: 27.115.22.134
+      db_name: JYDB
+      port: 2433
+      db_type: sqlserver
+    sqlserver:
+      uid: sa
+      pwd: Jiaguo@506
+      host: 10.1.0.222
+      db_name: mstest
+      port: 54600
+      db_type: sqlserver
+    wind_mem:
+      uid: admin
+      pwd: Intel@123
+      host: 192.168.100.145
+      db_name: wind_mem
+      port: 3306
+      db_type: mysql
+    monitor:
+      uid: dbsync
+      pwd: EEE@qxxtg123
+      host: kd02
+      db_name: kd_monitor
+      port: 3306
+      db_type: mysql
+    em-oracle:
+      uid: fd
+      pwd: fdlgg1234
+      host: 192.168.0.33
+      db_name: DM
+      port: 1521
+      db_type: oracle
+    jiaguo-future:
+      uid: admin
+      pwd: Intel@123
+      host: s6.jiaguo-tech.com
+      db_name: futurebars
+      port: 5432
+      db_type: postgresql
+    em_kline:
+      uid: klreader
+      pwd: klreader123
+      host: 101.201.141.107
+      db_name: kline
+      port: 3306
+      db_type: mysql
+    kd05:
+      uid: dbsync
+      pwd: EEE@qxxtg123
+      host: kd05
+      db_name: kdbase
+      port: 3306
+      db_type: mysql
+    minquota:
+      uid: dbsync
+      pwd: EEE@qxxtg123
+      host: kd05
+      db_name: kdbase
+      port: 3306
+      db_type: mysql
+    minquota_kd03:
+      uid: dbsync
+      pwd: EEE@qxxtg123
+      host: 10.1.0.222
+      db_name: kb_minquota
+      port: 3306
+      db_type: mysql
+    #kdbase:
+    #  uid: xiaotong
+    #  pwd: 12345678
+    #  host: 192.168.100.200
+    #  db_name: kdbase #dadsf
+    #  port: 3306
+    #  db_type: mysql
+    qsdata:
+      uid: admin
+      pwd: Intel@123
+      host: 192.168.100.145
+      db_name: wind_mem_jy
+      port: 3306
+      db_type: mysql
+qsdata:
+  redis_host: redis://:Kandian@123@192.168.100.199:6379/2

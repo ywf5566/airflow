@@ -208,10 +208,17 @@ fac_daily_l2_small_activebuy_turnover_closecorr10 = BashOperator(task_id="fac_da
 fac_daily_l2_actnetinflow_turnover_proptinall_openclose_delta = BashOperator(task_id="fac_daily_l2_actnetinflow_turnover_proptinall_openclose_delta", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 3724836 ", dag=dag)
 fac_daily_l2_contrade_tunrover_activebuy_propt_tsz20 = BashOperator(task_id="fac_daily_l2_contrade_tunrover_activebuy_propt_tsz20", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 3885605 ", dag=dag)
 
+
 trigger_deap_and_check = TriggerDagRunOperator(
     task_id='trigger_deap_and_check',
     trigger_dag_id='KD-FACTOR-DEAP-AND-CHECK',
     trigger_rule='all_done',
+    dag=dag
+)
+trigger_Interday_alpha_daily = TriggerDagRunOperator(
+    task_id="trigger_Interday_alpha_daily",
+    trigger_dag_id="Interday_alpha_daily",
+    trigger_rule='all_success',
     dag=dag
 )
 
@@ -250,6 +257,6 @@ fac_daily_l2_contrade_tunrover_activebuy_propt >> [fac_daily_l2_contrade_tunrove
 fac_daily_beta >> [fac_daily_delta_rd_kurt]
 fac_daily_nextday_close >> [fac_daily_nextday_close_vol_corr_d10, fac_daily_nextday_dq_turn]
 l2_data_check >> [fac_daily_l2_actbsdelta_ordercnt, fac_daily_level2_act, fac_daily_l2_activebuy_turnover_close_propt, fac_daily_l2v2_close_madlarge_netinflow_turnover, fac_daily_level2_m_13_16_high, fac_daily_l2_madlarge_buy_madlarge_sell_turnover]
-fac_daily_ln_s_dq_mv >> [fac_daily_to_10_d, fac_daily_pegcon, fac_daily_barraliquidity_21, fac_daily_irff_60, fac_daily_irff_120, fac_daily_to_120_d, fac_daily_to_60_d, fac_daily_ncasset2mv, fac_daily_to_20_d, fac_daily_to_3_d, fac_daily_irff_20, fac_daily_l2_ceil_board_seconds, fac_daily_to_15_d, fac_daily_to_5_d]
+fac_daily_ln_s_dq_mv >> [trigger_Interday_alpha_daily, fac_daily_to_10_d, fac_daily_pegcon, fac_daily_barraliquidity_21, fac_daily_irff_60, fac_daily_irff_120, fac_daily_to_120_d, fac_daily_to_60_d, fac_daily_ncasset2mv, fac_daily_to_20_d, fac_daily_to_3_d, fac_daily_irff_20, fac_daily_l2_ceil_board_seconds, fac_daily_to_15_d, fac_daily_to_5_d]
 
 

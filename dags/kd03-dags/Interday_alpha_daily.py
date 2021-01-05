@@ -44,6 +44,6 @@ interday_alpha_universe = BashOperator(task_id="interday_alpha_universe", bash_c
 interday_alpha_ti0 = BashOperator(task_id="interday_alpha_ti0", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_factor_ti0.sh ", dag=dag)
 factor_check_ti0 = BashOperator(task_id="factor_check_ti0", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check_ti0.sh ", dag=dag)
 factor_kd05_ti0 = BashOperator(task_id="factor_kd05_ti0", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_kd05_ti0.sh ", dag=dag)
+factors_check_ti0_kd05 = BashOperator(task_id="factors_check_ti0_kd05",bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check_ti0_kd05.sh", dag=dag)
 
-
-check_qsdata >> l2_data_check >> daily_feature_cal >> convert_pkl >> save_feature_to_es >> interday_alpha_universe >> interday_alpha_ti0 >>factor_check_ti0 >> factor_kd05_ti0
+check_qsdata >> l2_data_check >> daily_feature_cal >> convert_pkl >> save_feature_to_es >> interday_alpha_universe >> interday_alpha_ti0 >>factor_check_ti0 >> factor_kd05_ti0 >> factors_check_ti0_kd05

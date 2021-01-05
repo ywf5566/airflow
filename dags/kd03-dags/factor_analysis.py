@@ -9,7 +9,7 @@ default_args = {'owner': 'afroot03'}
 dag = DAG('factor_analysis',
           default_args=default_args,
           schedule_interval='30 3 * * *',
-          atchup=False,
+          catchup=False,
           start_date=datetime(2020, 12, 17, 3, 30))
 
 t8 = BashOperator(task_id="t8", bash_command="sh /usr/lib/quant/factor/factor-analysis/factor_analysis_service/tool/factor_analysis.sh 3982320 3982322 task ", dag=dag)

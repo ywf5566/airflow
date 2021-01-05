@@ -7,22 +7,24 @@ from monitor.core.send_message import send_message
 from monitor.core.send_message import ENV
 from monitor.core.send_message import MSG_HEAD
 from monitor.core.send_message import MSG_LEVEL
-
+import os
 
 default_args = {'owner': 'afroot03'}
 
 
-def on_dag_failure():
-    send_message(msg_id='FACTOR_DAILY_RESULT',
-                 msg_head=MSG_HEAD,
-                 msg_level=MSG_LEVEL.CRITICAL.value,
-                 service='因子库',
-                 msg_type='服务运行结果正确性检查',
-                 msg_description='因子库脚本运行失败！',
-                 env=ENV.PROD.value,
-                 dt=datetime.now(),
-                 host_name='kd03',
-                 detailed_information='kd03因子任务：Interday_alpha_daily运行异常！')
+class callBack:
+    def on_dag_failure(self):
+        os['kdconfig'] = '/home/keydriver/airflow/kd_airflow/dags/database.yaml'
+        send_message(msg_id='FACTOR_DAILY_RESULT',
+                     msg_head=MSG_HEAD,
+                     msg_level=MSG_LEVEL.CRITICAL.value,
+                     service='因子库',
+                     msg_type='服务运行结果正确性检查',
+                     msg_description='因子库脚本运行失败！',
+                     env=ENV.PROD.value,
+                     dt=datetime.now(),
+                     host_name='kd03',
+                     detailed_information='kd03因子任务：Interday_alpha_daily运行异常！')
 
 
 dag = DAG('Interday_alpha_daily',
@@ -30,18 +32,18 @@ dag = DAG('Interday_alpha_daily',
           schedule_interval=None,
           catchup=False,
           start_date=datetime(2020, 12, 17, 18, 0),
-          on_failure_callback=on_dag_failure)
+          on_failure_callback=callBack.on_dag_failure)
 
 
 check_qsdata = BashOperator(task_id="check_qsdata", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-repo-dep-check.sh check_qsdata ", dag=dag)
-l2_factor_check = BashOperator(task_id="l2_factor_check", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-repo-dep-check.sh l2_factor_check ", dag=dag)
+l2_data_check = BashOperator(task_id="l2_data_check", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-repo-dep-check.sh check_l2_data ", dag=dag)
 daily_feature_cal = BashOperator(task_id="daily_feature_cal", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_daily_cal.sh ", dag=dag)
 convert_pkl = BashOperator(task_id="convert_pkl", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_hdf2pkl.sh ", dag=dag)
 save_feature_to_es = BashOperator(task_id="save_feature_to_es", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_pkl2es.sh ", dag=dag)
 interday_alpha_universe = BashOperator(task_id="interday_alpha_universe", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_universe_ti0.sh ", dag=dag)
 interday_alpha_ti0 = BashOperator(task_id="interday_alpha_ti0", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_factor_ti0.sh ", dag=dag)
-factor_check_ti0 = BashOperator(task_id="factor_check_ti0", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/ factors_check_ti0.sh ", dag=dag)
-factor_kd05_ti0 = BashOperator(task_id="factor_kd05_ti0", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/ factors_kd05_ti0.sh ", dag=dag)
+factor_check_ti0 = BashOperator(task_id="factor_check_ti0", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check_ti0.sh ", dag=dag)
+factor_kd05_ti0 = BashOperator(task_id="factor_kd05_ti0", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_kd05_ti0.sh ", dag=dag)
 
 
-check_qsdata >> l2_factor_check >> daily_feature_cal >> convert_pkl >> save_feature_to_es >> interday_alpha_universe >> interday_alpha_ti0 >>factor_check_ti0 >> factor_kd05_ti0
+check_qsdata >> l2_data_check >> daily_feature_cal >> convert_pkl >> save_feature_to_es >> interday_alpha_universe >> interday_alpha_ti0 >>factor_check_ti0 >> factor_kd05_ti0

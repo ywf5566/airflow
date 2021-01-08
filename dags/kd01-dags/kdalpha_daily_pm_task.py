@@ -13,6 +13,7 @@ dag = DAG(
     default_args=default_args,
     description='kdalpha_daily_pm_task',
     schedule_interval='30 21 * * *',
+    catchup=False,
     start_date=datetime(2020, 12, 21, 21, 30)
 )
 # ==========================================================tasks======================================================

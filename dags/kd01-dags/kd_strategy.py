@@ -12,6 +12,7 @@ dag = DAG(
     default_args=default_args,
     description='kd_strategy,策略',
     schedule_interval='30 20 * * *',
+    catchup=False,
     start_date=datetime(2020, 12, 21, 20, 30)
 )
 # ==========================================================tasks======================================================

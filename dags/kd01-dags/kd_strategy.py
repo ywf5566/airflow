@@ -26,8 +26,8 @@ v3_src_strategy_daily_task = SSHOperator(task_id="kd06_v3_src_strategy_daily_tas
 strategy_report_week = SSHOperator(task_id="kd06_strategy_report_week", ssh_conn_id="kd06_keydriver",command="sh /usr/lib/carter/kd_strategy/script/strategy_report_week_task.sh dev ", dag=dag)
 v3_strategy_daily_task = SSHOperator(task_id="kd06_v3_strategy_daily_task", ssh_conn_id="kd06_keydriver",command="sh /usr/lib/carter/kd_strategy/script/v3_strategy_daily_task.sh dev ", dag=dag)
 job_end_task = SSHOperator(task_id="kd06_job_end_task", ssh_conn_id="kd06_keydriver",command="sh /usr/lib/carter/kd_strategy/script/monitor_end_task.sh dev ", dag=dag)
-kd06_stockrnn_daily_task = SSHOperator(task_id="kd06_stockrnn_daily_task", ssh_conn_id="kd06_keydriver",command="sh /usr/lib/carter/kd_strategy/script/stockrnn_daily_task.sh ", dag=dag)
-kd06_rsync_kd_policy_position = SSHOperator(task_id="kd06_rsync_kd_policy_position", ssh_conn_id="kd06_keydriver",command="sh /usr/lib/carter/kd_strategy/script/rsync_kd_policy_position.sh ", dag=dag)
+kd06_stockrnn_daily_task = SSHOperator(task_id="kd06_stockrnn_daily_task", ssh_conn_id="kd06_keydriver",command="sh /usr/lib/carter/kd_strategy/script/stockrnn_daily_task.sh dev ", dag=dag)
+kd06_rsync_kd_policy_position = SSHOperator(task_id="kd06_rsync_kd_policy_position", ssh_conn_id="kd06_keydriver",command="sh /usr/lib/carter/kd_strategy/script/rsync_kd_policy_position.sh dev ", dag=dag)
 
 
 

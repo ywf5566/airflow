@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from airflow import DAG
 from airflow.contrib.operators.ssh_operator import SSHOperator
+from airflow.operators.dagrun_operator import TriggerDagRunOperator
 from datetime import datetime
 
 
@@ -28,7 +29,7 @@ v3_strategy_daily_task = SSHOperator(task_id="kd06_v3_strategy_daily_task", ssh_
 job_end_task = SSHOperator(task_id="kd06_job_end_task", ssh_conn_id="kd06_keydriver",command="sh /usr/lib/carter/kd_strategy/script/monitor_end_task.sh dev ", dag=dag)
 kd06_stockrnn_daily_task = SSHOperator(task_id="kd06_stockrnn_daily_task", ssh_conn_id="kd06_keydriver",command="sh /usr/lib/carter/kd_strategy/script/stockrnn_daily_task.sh dev ", dag=dag)
 kd06_rsync_kd_policy_position = SSHOperator(task_id="kd06_rsync_kd_policy_position", ssh_conn_id="kd06_keydriver",command="sh /usr/lib/carter/kd_strategy/script/rsync_kd_policy_position.sh dev ", dag=dag)
-
+trigger_daily_pm_task = TriggerDagRunOperator(task_id="trigger_pm_task", trigger_dag_id="kdalpha_daily_pm_task", trigger_rule="all_done", dag=dag)
 
 
 # ==========================================================dependencies================================================
@@ -41,3 +42,4 @@ v3_strategy_daily_task >> [job_end_task]
 v3_src_strategy_daily_task >> [v3_strategy_daily_task]
 stock_indicator_task >> strategy_report_week >> job_end_task
 job_start_task >> kd06_stockrnn_daily_task >> kd06_rsync_kd_policy_position >> job_end_task
+job_end_task >> trigger_daily_pm_task

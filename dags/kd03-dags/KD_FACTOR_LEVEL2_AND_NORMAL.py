@@ -208,7 +208,7 @@ fac_daily_l2_small_activebuy_turnover_closecorr10 = BashOperator(task_id="fac_da
 fac_daily_l2_actnetinflow_turnover_proptinall_openclose_delta = BashOperator(task_id="fac_daily_l2_actnetinflow_turnover_proptinall_openclose_delta", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 3724836 ", dag=dag)
 fac_daily_l2_contrade_tunrover_activebuy_propt_tsz20 = BashOperator(task_id="fac_daily_l2_contrade_tunrover_activebuy_propt_tsz20", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 3885605 ", dag=dag)
 fac_daily_em_quote_addposdays10 = BashOperator(task_id="fac_daily_em_quote_addposdays10", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5655788 ", dag=dag)
-fac_daily_em_quote_close = BashOperator(task_id="fac_daily_em_quote_addposdays10", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5655802 ", dag=dag)
+fac_daily_em_quote_close = BashOperator(task_id="fac_daily_em_quote_close", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5655802 ", dag=dag)
 
 trigger_deap_and_check = TriggerDagRunOperator(
     task_id='trigger_deap_and_check',

@@ -8,7 +8,7 @@ from airflow.operators.dagrun_operator import TriggerDagRunOperator
 default_args = {'owner': 'afroot04'}
 dag = DAG('kd05_kd_strategy',
           default_args=default_args,
-          schedule_interval='30 18 * * *',
+          schedule_interval='30 19 * * *',
           catchup=False,
           start_date=datetime(2020, 12, 24, 16, 0))
 

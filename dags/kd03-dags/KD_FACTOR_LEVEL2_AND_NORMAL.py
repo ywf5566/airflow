@@ -14,7 +14,7 @@ dag = DAG('KD_FACTOR_LEVEL2_AND_NORMAL',
           default_args=default_args,
           schedule_interval='40 17 * * *',
           catchup=False,
-          start_date=datetime(2021, 1, 21, 17, 50))
+          start_date=datetime(2021, 1, 20, 17, 40))
 
 check_qsdata = BashOperator(task_id="check_qsdata", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-repo-dep-check.sh check_qsdata ", dag=dag)
 fac_daily_alpha_zs_8 = BashOperator(task_id="fac_daily_alpha_zs_8", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 89070 ", dag=dag)

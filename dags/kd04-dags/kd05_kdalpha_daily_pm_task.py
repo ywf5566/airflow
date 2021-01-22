@@ -7,7 +7,7 @@ from airflow.contrib.operators.ssh_operator import SSHOperator
 default_args = {'owner': 'afroot04'}
 dag = DAG('kd05_kdalpha_daily_pm_task',
           default_args=default_args,
-          schedule_interval='15 18 * * *',
+          schedule_interval=None,
           catchup=False,
           start_date=datetime(2020, 12, 24, 16, 0))
 

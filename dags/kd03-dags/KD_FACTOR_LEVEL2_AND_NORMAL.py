@@ -14,7 +14,7 @@ dag = DAG('KD_FACTOR_LEVEL2_AND_NORMAL',
           default_args=default_args,
           schedule_interval='40 17 * * *',
           catchup=False,
-          start_date=datetime(2020, 12, 21, 17, 50))
+          start_date=datetime(2021, 1, 21, 17, 50))
 
 check_qsdata = BashOperator(task_id="check_qsdata", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-repo-dep-check.sh check_qsdata ", dag=dag)
 fac_daily_alpha_zs_8 = BashOperator(task_id="fac_daily_alpha_zs_8", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 89070 ", dag=dag)
@@ -223,7 +223,7 @@ trigger_Interday_alpha_daily = TriggerDagRunOperator(
     dag=dag
 )
 
-fac_daily_barradastd_252_42_0 >> [fac_daily_barra_residvltl_1]
+fac_daily_barradastd_252_42_0 >> [fac_daily_barra_residvltl_1, fac_daily_em_quote_close, fac_daily_em_quote_addposdays10]
 fac_quarter_s_fa_assetsturn >> [fac_daily_ncasset2mv]
 fac_quarter_tot_cur_assets >> [fac_daily_ncasset2mv, fac_quarter_debt2ncassets]
 fac_daily_interday_close >> [fac_daily_interday_dq_turn, fac_daily_interday_close_vol_corr_d10]
@@ -252,7 +252,6 @@ fac_daily_l2_actbsdelta_ordercnt >> [fac_daily_l2_madsmall_netinflow_turnover_pr
                                      fac_daily_l2_small_activebuy_turnover_closecorr10] >> trigger_deap_and_check
 
 check_qsdata >> [fac_daily_em_quote_addposdays10, fac_daily_alpha_zs_8, fac_daily_fastmadivslowma_20_60, fac_quarter_s_fa_assetsturn, fac_daily_netprofit_grow_rate, fac_daily_hc2cl_15_d, fac_daily_close, fac_daily_alpha_zs_1, fac_daily_alpha_zs_2, fac_daily_alpha_zs_5_31, fac_daily_alpha_zs_4, fac_daily_alpha_zs_6, fac_daily_alpha_zs_7, fac_daily_con_npcgrate_2y_roll, fac_daily_hc2cl_5_d, fac_daily_h2c_120_d, fac_daily_l2c_3_d, fac_daily_l2c_120_d, fac_daily_l2c_20_d, fac_daily_h2c_20_d, fac_daily_kd_negative_score, fac_daily_h2c_3_d, fac_daily_hc2cl_3_d, fac_daily_h2l_3_d, fac_daily_h2l_120_d, fac_daily_alpha_zs_5_31_daily, fac_daily_l2c_15_d, fac_daily_h2l_60_d, fac_daily_hc2cl_10_d, fac_daily_h2c_10_d, fac_daily_h2c_5_d, fac_daily_rtn_20, fac_daily_h2l_20_d, fac_daily_hc2cl_60_d, fac_quarter_net_profit_excl_min_int_inc, fac_daily_lnrtn, fac_daily_alpha_zs_3, fac_quarter_tot_cur_assets, fac_daily_beta, fac_daily_h2l_10_d, fac_daily_l2c_10_d, fac_daily_l2c_5_d, fac_daily_fastmadivslowma_20_90, fac_daily_interday_close, fac_daily_random_daily_factor, fac_daily_h2l_15_d, fac_daily_h2c_60_d, fac_daily_hc2cl_120_d, fac_daily_l2c_60_d, fac_daily_hc2cl_20_d, fac_daily_con_eps, fac_quarter_s_qfa_yoynetprofit, fac_daily_fastmadivslowma_20_120, fac_daily_alpha_ZS_5_daily, fac_daily_h2c_15_d, fac_daily_nextday_close, fac_daily_smart_money, fac_daily_h2l_5_d, fac_daily_nw_abs_netbuyshares, l2_data_check, fac_daily_alpha_ZS_5, fac_daily_ln_s_dq_mv, fac_daily_tf_alpha_1, fac_daily_volume_ratio_d_5]
-fac_daily_em_quote_addposdays10 >> fac_daily_em_quote_close
 fac_daily_barracmra_21_12 >> [fac_daily_barra_residvltl_1]
 fac_daily_l2_activebuy_turnover_close_propt >> [fac_daily_l2_actnetinflow_turnover_proptinall_openclose_delta]
 fac_daily_l2_contrade_tunrover_activebuy_propt >> [fac_daily_l2_contrade_tunrover_activebuy_propt_tsz20]

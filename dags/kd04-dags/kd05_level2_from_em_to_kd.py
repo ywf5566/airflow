@@ -3,6 +3,7 @@
 from datetime import datetime
 from airflow import DAG
 from airflow.contrib.operators.ssh_operator import SSHOperator
+from airflow.operators.dagrun_operator import TriggerDagRunOperator
 
 default_args = {'owner': 'afroot04'}
 dag = DAG('kd05_level2_from_em_to_kd',
@@ -15,4 +16,8 @@ level2_from_em = SSHOperator(task_id="level2_from_em", ssh_conn_id="kd05_keydriv
                              command="/usr/lib/quant/factor/factor_repo/tools/l2code/l2source_file/sync.sh ", dag=dag)
 level2_to_kd = SSHOperator(task_id="level2_to_kd", ssh_conn_id="kd05_keydriver",
                            command="/usr/lib/quant/factor/factor_repo/tools/l2code/parser/parser.sh ", dag=dag)
-level2_from_em >> [level2_to_kd]
+
+trigger_kd04_factor = TriggerDagRunOperator(task_id="trigger_factor_normal", trigger_dag_id="KD05_FACTOR_LEVEL2_AND_NORMAL", trigger_rule="all_done", dag=dag)
+trigger_kd03_factor = SSHOperator(task_id="trigger_kd03_factor", ssh_conn_id="kd03_keydriver",
+                                  command="source /home/keydriver/airflow/bin/activate;airflow trigger_dag KD_FACTOR_LEVEL2_AND_NORMAL ", dag=dag)
+level2_from_em >> level2_to_kd >> [trigger_kd04_factor]

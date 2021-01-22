@@ -3,6 +3,7 @@
 from datetime import datetime
 from airflow import DAG
 from airflow.contrib.operators.ssh_operator import SSHOperator
+from airflow.operators.dagrun_operator import TriggerDagRunOperator
 
 default_args = {'owner': 'afroot04'}
 dag = DAG('KD05_FACTOR_DEAP_AND_CHECK',
@@ -89,6 +90,12 @@ fac_daily_kd_deap_factor_92 = SSHOperator(task_id="fac_daily_kd_deap_factor_92",
 fac_daily_kd_deap_factor_94 = SSHOperator(task_id="fac_daily_kd_deap_factor_94", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 3531393 ", dag=dag)
 check_all_factor = SSHOperator(task_id="check_all_factor", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factors-check.sh ", dag=dag)
 
+trigger_kd_strategy = TriggerDagRunOperator(
+    task_id='trigger_kd_strategy',
+    trigger_dag_id='kd05_kd_strategy',
+    trigger_rule='all_done',
+    dag=dag
+)
 
 check_qsdata >> [fac_daily_kd_deap_factor_8, fac_daily_kd_deap_factor_2, fac_daily_kd_deap_factor_3, fac_daily_kd_deap_factor_1, fac_daily_kd_deap_factor_6, fac_daily_kd_deap_factor_7, fac_daily_kd_deap_factor_4, fac_daily_kd_deap_factor_5, fac_daily_kd_deap_factor_18, fac_daily_kd_deap_factor_19, fac_daily_kd_deap_factor_16, fac_daily_kd_deap_factor_11, fac_daily_kd_deap_factor_25, fac_daily_kd_deap_factor_24, fac_daily_kd_deap_factor_12, fac_daily_kd_deap_factor_13, fac_daily_kd_deap_factor_14, fac_daily_kd_deap_factor_20, fac_daily_kd_deap_factor_23, fac_daily_kd_deap_factor_17]
 fac_daily_kd_deap_factor_52 >> [fac_daily_kd_deap_factor_78]

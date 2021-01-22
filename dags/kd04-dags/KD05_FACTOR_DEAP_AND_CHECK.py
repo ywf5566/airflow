@@ -173,3 +173,4 @@ fac_daily_kd_deap_factor_60 >> [fac_daily_kd_deap_factor_85]
 fac_daily_kd_deap_factor_43 >> [fac_daily_kd_deap_factor_72]
 fac_daily_kd_deap_factor_80 >> [check_all_factor]
 fac_daily_kd_deap_factor_37 >> [fac_daily_kd_deap_factor_66]
+check_all_factor >> trigger_kd_strategy

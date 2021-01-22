@@ -41,5 +41,5 @@ block_indicator_task >> [stock_indicator_task]
 v3_strategy_daily_task >> [job_end_task]
 v3_src_strategy_daily_task >> [v3_strategy_daily_task]
 stock_indicator_task >> strategy_report_week >> job_end_task
-job_start_task >> kd06_stockrnn_daily_task >> kd06_rsync_kd_policy_position >> job_end_task
+job_start_task >> [kd06_stockrnn_daily_task, v3_src_strategy_daily_task] >> kd06_rsync_kd_policy_position >> job_end_task
 job_end_task >> trigger_daily_pm_task

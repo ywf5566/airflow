@@ -6,9 +6,9 @@ from airflow.contrib.operators.ssh_operator import SSHOperator
 from airflow.operators.dagrun_operator import TriggerDagRunOperator
 
 default_args = {'owner': 'afroot04'}
-dag = DAG('kd05_kd_strategy',
+dag = DAG('KD05_kd_strategy',
           default_args=default_args,
-          schedule_interval='30 19 * * *',
+          schedule_interval=None,
           catchup=False,
           start_date=datetime(2020, 12, 24, 16, 0))
 
@@ -25,7 +25,7 @@ v3_strategy_daily_task = SSHOperator(task_id="v3_strategy_daily_task", ssh_conn_
 job_end_task = SSHOperator(task_id="job_end_task", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/carter/kd_strategy/script/monitor_end_task.sh prod ", dag=dag)
 trigger_daily_pm_task = TriggerDagRunOperator(task_id="trigger_pm_task",
                                               trigger_dag_id="kd05_kdalpha_daily_pm_task",
-                                              trigger_rule="all_done", dag=dag)
+                                              trigger_rule="all_success", dag=dag)
 
 stock_indicator_task >> [strategy_report_week_task]
 block_indicator_task >> [stock_indicator_task]

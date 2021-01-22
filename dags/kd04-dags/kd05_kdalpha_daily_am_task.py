@@ -5,7 +5,7 @@ from airflow import DAG
 from airflow.contrib.operators.ssh_operator import SSHOperator
 
 default_args = {'owner': 'afroot04'}
-dag = DAG('kd05_kdalpha_daily_am_task',
+dag = DAG('KD05_kdalpha_daily_am_task',
           default_args=default_args,
           schedule_interval='45 9 * * *',
           catchup=False,

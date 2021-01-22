@@ -6,7 +6,7 @@ from airflow.contrib.operators.ssh_operator import SSHOperator
 from airflow.operators.dagrun_operator import TriggerDagRunOperator
 
 default_args = {'owner': 'afroot04'}
-dag = DAG('kd05_level2_from_em_to_kd',
+dag = DAG('KD05_level2_from_em_to_kd',
           default_args=default_args,
           schedule_interval='0 17 * * *',
           catchup=False,

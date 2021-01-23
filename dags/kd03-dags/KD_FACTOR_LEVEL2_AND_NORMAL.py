@@ -5,6 +5,8 @@ from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.dagrun_operator import TriggerDagRunOperator
 
+""" 由 kd04 airflow的 KD05_level2_from_em_to_kd 任务执行完后触发 """
+
 default_args = {'owner': 'afroot03',
                 'retries': 1,
                 'retry_delay': timedelta(minutes=1)
@@ -12,7 +14,7 @@ default_args = {'owner': 'afroot03',
 
 dag = DAG('KD_FACTOR_LEVEL2_AND_NORMAL',
           default_args=default_args,
-          schedule_interval='40 17 * * *',
+          schedule_interval=None,
           catchup=False,
           start_date=datetime(2021, 1, 20, 17, 40))
 

@@ -92,7 +92,7 @@ check_all_factor = SSHOperator(task_id="check_all_factor", ssh_conn_id="kd05_key
 
 trigger_kd_strategy = TriggerDagRunOperator(
     task_id='trigger_kd_strategy',
-    trigger_dag_id='kd05_kd_strategy',
+    trigger_dag_id='KD05_kd_strategy',
     trigger_rule='all_done',
     dag=dag
 )

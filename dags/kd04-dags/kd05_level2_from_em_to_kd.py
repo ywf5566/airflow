@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from datetime import datetime
+from datetime import datetime,timedelta
 from airflow import DAG
 from airflow.contrib.operators.ssh_operator import SSHOperator
 from airflow.operators.dagrun_operator import TriggerDagRunOperator
 
-default_args = {'owner': 'afroot04'}
+default_args = {'owner': 'afroot04', 'retries': 2, 'retry_delay': timedelta(minutes=2)}
 dag = DAG('KD05_level2_from_em_to_kd',
           default_args=default_args,
           schedule_interval='0 17 * * *',

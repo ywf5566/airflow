@@ -8,9 +8,9 @@ from airflow.operators.dagrun_operator import TriggerDagRunOperator
 default_args = {'owner': 'afroot04'}
 dag = DAG('KD05_kd_strategy',
           default_args=default_args,
-          schedule_interval=None,
+          schedule_interval='30 19 * * *',
           catchup=False,
-          start_date=datetime(2020, 12, 24, 16, 0))
+          start_date=datetime(2021, 1, 25, 16, 0))
 
 job_start_task = SSHOperator(task_id="job_start_task", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/carter/kd_strategy/script/monitor_start_task.sh prod ", dag=dag)
 v3_dk_daily_task = SSHOperator(task_id="v3_dk_daily_task", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/carter/kd_strategy/script/v3_dk_daily_task.sh prod ", dag=dag)

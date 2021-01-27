@@ -9,7 +9,7 @@ default_args = {'owner': 'afroot03'}
 
 dag = DAG('sync_minquota',
           default_args=default_args,
-          schedule_interval='15,55 17 * * *',
+          schedule_interval='15 17 * * *',
           catchup=False,
           start_date=datetime(2020, 12, 17, 17, 0))
 

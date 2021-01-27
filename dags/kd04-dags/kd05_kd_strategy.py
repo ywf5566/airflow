@@ -5,10 +5,11 @@ from airflow import DAG
 from airflow.contrib.operators.ssh_operator import SSHOperator
 from airflow.operators.dagrun_operator import TriggerDagRunOperator
 
-default_args = {'owner': 'afroot04','retries': 2, 'retry_delay': timedelta(minutes=1)}
+""" 由kd03的interday_alpha_daily任务触发 """
+default_args = {'owner': 'afroot04', 'retries': 2, 'retry_delay': timedelta(minutes=1)}
 dag = DAG('KD05_kd_strategy',
           default_args=default_args,
-          schedule_interval='30 19 * * *',
+          schedule_interval=None,
           catchup=False,
           start_date=datetime(2021, 1, 25, 16, 0))
 

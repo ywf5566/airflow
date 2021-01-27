@@ -3,6 +3,7 @@
 from datetime import datetime
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
+from airflow.operators.dagrun_operator import TriggerDagRunOperator
 
 default_args = {'owner': 'afroot04'}
 dag = DAG('sync_minquota',
@@ -15,6 +16,7 @@ sync_minquota = BashOperator(task_id="sync_minquota",
                              bash_command="sh /usr/lib/carter/dbsync/scripts/sync_minquota.sh ", dag=dag)
 update_qsdata = BashOperator(task_id="update_qsdata",
                              bash_command="sh /usr/lib/carter/dbsync/scripts/update_qsdata.sh ", dag=dag)
+trigger_kd04_factor = TriggerDagRunOperator(task_id="trigger_factor_normal", trigger_dag_id="KD05_FACTOR_LEVEL2_AND_NORMAL", trigger_rule="all_success", dag=dag)
 
 
-sync_minquota >> [update_qsdata]
+sync_minquota >> update_qsdata >> trigger_kd04_factor

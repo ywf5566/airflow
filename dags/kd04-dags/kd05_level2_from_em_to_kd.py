@@ -18,6 +18,5 @@ level2_to_kd = SSHOperator(task_id="level2_to_kd", ssh_conn_id="kd05_keydriver",
                            command="/usr/lib/quant/factor/factor_repo/tools/l2code/parser/parser.sh ", dag=dag)
 
 trigger_kd04_factor = TriggerDagRunOperator(task_id="trigger_factor_normal", trigger_dag_id="KD05_FACTOR_LEVEL2_AND_NORMAL", trigger_rule="all_success", dag=dag)
-trigger_kd03_factor = SSHOperator(task_id="trigger_kd03_factor", ssh_conn_id="kd03_keydriver",
-                                  command="source /home/keydriver/airflow/bin/activate;airflow trigger_dag KD_FACTOR_LEVEL2_AND_NORMAL ", dag=dag)
-level2_from_em >> level2_to_kd >> [trigger_kd04_factor, trigger_kd03_factor]
+
+level2_from_em >> [level2_to_kd, trigger_kd04_factor]

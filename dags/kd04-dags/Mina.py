@@ -13,7 +13,9 @@ dag = DAG('Mina',
 
 infoPoolSummary = BashOperator(task_id="infoPoolSummary",
                                bash_command="sh /usr/lib/carter/kd_news_process/scripts/Mina/infoPoolSummary.sh ",
-                               dag=dag)
+                               dag=dag,
+                               pool="factor")
 infoPoolWebSummary = BashOperator(task_id="infoPoolWebSummary",
                                   bash_command="sh /usr/lib/carter/kd_news_process/scripts/Mina/infoPoolWebSummary.sh ",
-                                  dag=dag)
+                                  dag=dag,
+                                  pool="factor")

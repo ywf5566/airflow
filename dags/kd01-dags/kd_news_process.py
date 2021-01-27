@@ -1,28 +1,28 @@
 # -*- coding: utf-8 -*-
 from airflow import DAG
-from airflow.contrib.operators.ssh_operator import SSHOperator
+from airflow.operators.bash_operator import BashOperator
 from datetime import datetime
 
 default_args = {
-    'owner': 'keydriver'
+    'owner': 'afroot01'
 }
 
 dag = DAG(
-    'kd01_keydriver_news_process',
+    'kd01_news_process',
     default_args=default_args,
-    description='kd_news_process',
+    catchup=False,
     schedule_interval='*/10 * * * *',
-    start_date=datetime(2020, 12, 22, 13, 20)
+    start_date=datetime(2021, 1, 27, 17, 0)
 )
 # ==========================================================tasks======================================================
-update_cluster_id = SSHOperator(task_id="update_cluster_id", ssh_conn_id="kd01_keydriver",command="sh /usr/lib/carter/kd_news_process/scripts/step1/updateClusterId.sh ", dag=dag)
-predict_news_sync = SSHOperator(task_id="predict_news_sync", ssh_conn_id="kd01_keydriver",command="sh /usr/lib/carter/kd_news_process/scripts/step1/predictorProcess.sh ", dag=dag)
-keydriver_news_process = SSHOperator(task_id="keydriver_news_process", ssh_conn_id="kd01_keydriver",command="sh /usr/lib/carter/kd_news_process/scripts/step2/keydriverProcess.sh ", dag=dag)
-update_em_news_by_es_news = SSHOperator(task_id="update_em_news_by_es_news", ssh_conn_id="kd01_keydriver",command="sh /usr/lib/carter/kd_news_process/scripts/step2/updateEmTopNews.sh ", dag=dag)
-supplement_industry = SSHOperator(task_id="supplement_industry", ssh_conn_id="kd01_keydriver",command="sh /usr/lib/carter/kd_news_process/scripts/step3/supplementIndustry.sh ", dag=dag)
-supplement_em_news = SSHOperator(task_id="supplement_em_news", ssh_conn_id="kd01_keydriver",command="sh /usr/lib/carter/kd_news_process/scripts/step3/supplementEmNews.sh ", dag=dag)
-supplement_summary = SSHOperator(task_id="supplement_summary", ssh_conn_id="kd01_keydriver",command="sh /usr/lib/carter/kd_news_process/scripts/step3/supplementSummary.sh ", dag=dag)
-syncNotTopNewsToEm = SSHOperator(task_id="syncNotTopNewsToEm", ssh_conn_id="kd01_keydriver",command="sh /usr/lib/carter/kd_news_process/scripts/step4/syncNotTopNewsToEm.sh ", dag=dag)
+update_cluster_id = BashOperator(task_id="update_cluster_id", bash_command="sh /usr/lib/carter/kd_news_process/scripts/step1/updateClusterId.sh ", dag=dag)
+predict_news_sync = BashOperator(task_id="predict_news_sync", bash_command="sh /usr/lib/carter/kd_news_process/scripts/step1/predictorProcess.sh ", dag=dag)
+keydriver_news_process = BashOperator(task_id="keydriver_news_process", bash_command="sh /usr/lib/carter/kd_news_process/scripts/step2/keydriverProcess.sh ", dag=dag)
+update_em_news_by_es_news = BashOperator(task_id="update_em_news_by_es_news", bash_command="sh /usr/lib/carter/kd_news_process/scripts/step2/updateEmTopNews.sh ", dag=dag)
+supplement_industry = BashOperator(task_id="supplement_industry", bash_command="sh /usr/lib/carter/kd_news_process/scripts/step3/supplementIndustry.sh ", dag=dag)
+supplement_em_news = BashOperator(task_id="supplement_em_news", bash_command="sh /usr/lib/carter/kd_news_process/scripts/step3/supplementEmNews.sh ", dag=dag)
+supplement_summary = BashOperator(task_id="supplement_summary", bash_command="sh /usr/lib/carter/kd_news_process/scripts/step3/supplementSummary.sh ", dag=dag)
+syncNotTopNewsToEm = BashOperator(task_id="syncNotTopNewsToEm", bash_command="sh /usr/lib/carter/kd_news_process/scripts/step4/syncNotTopNewsToEm.sh ", dag=dag)
 
 # ==========================================================dependencies======================================================
 

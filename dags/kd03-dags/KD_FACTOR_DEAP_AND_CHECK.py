@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from datetime import datetime
+from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
 
-default_args = {'owner': 'afroot03'}
+default_args = {'owner': 'afroot03', 'retries': 2, 'retry_delay': timedelta(minutes=1)}
 
 dag = DAG('KD-FACTOR-DEAP-AND-CHECK',
           default_args=default_args,
           schedule_interval=None,
+          catchup=False,
           start_date=datetime(2020, 12, 17, 17, 0))
 
 # ============================================== tasks ==================================================

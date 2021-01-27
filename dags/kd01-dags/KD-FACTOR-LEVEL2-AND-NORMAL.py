@@ -2,10 +2,10 @@
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.dagrun_operator import TriggerDagRunOperator
-from datetime import datetime
+from datetime import datetime,timedelta
 
 default_args = {
-    'owner': 'kd01_factor_repo'
+    'owner': 'kd01_factor_repo', 'retries': 2, 'retry_delay': timedelta(minutes=1)
 }
 dag = DAG(
     'KD-FACTOR-L2-AND-NORMAL',

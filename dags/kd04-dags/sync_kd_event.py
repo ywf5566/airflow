@@ -53,9 +53,9 @@ event_acceptance_of_bid = BashOperator(task_id="event_acceptance_of_bid",
 event_stock_meeting = BashOperator(task_id="event_stock_meeting",
                                    bash_command="sh /usr/lib/carter/kd_event/scripts/exe_event_pipeline.sh stock_meeting_pipeline.py ",
                                    dag=dag)
-event_indicator_change = BashOperator(task_id="event_indicator_change",
-                                      bash_command="sh /usr/lib/carter/kd_event/scripts/event_indicator_change.sh ",
-                                      dag=dag)
+# event_indicator_change = BashOperator(task_id="event_indicator_change",
+#                                       bash_command="sh /usr/lib/carter/kd_event/scripts/event_indicator_change.sh ",
+#                                       dag=dag)
 event_creadit_rating = BashOperator(task_id="event_creadit_rating",
                                     bash_command="sh /usr/lib/carter/kd_event/scripts/exe_event_pipeline.sh stock_credit_rating_pipeline.py ",
                                     dag=dag)

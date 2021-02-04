@@ -35,4 +35,4 @@ sync_stock_st >> [eod_table]
 sync_stock_suspended >> [eod_table]
 check_em_sw_index >> [eod_table]
 em_sw_index >> [check_em_sw_index]
-[kd_check, sync_stock_adjfactor, sync_org_id_to_kdcode] >> trigger_03_minquota >>trigger_04_minquota
+[kd_check, sync_stock_adjfactor, sync_org_id_to_kdcode] >> trigger_03_minquota >> trigger_04_minquota

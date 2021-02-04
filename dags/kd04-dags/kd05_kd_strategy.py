@@ -24,6 +24,9 @@ v3_src_strategy_daily_task = SSHOperator(task_id="v3_src_strategy_daily_task", s
 strategy_report_week_task = SSHOperator(task_id="strategy_report_week_task", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/carter/kd_strategy/script/strategy_report_week_task.sh prod ", dag=dag)
 v3_strategy_daily_task = SSHOperator(task_id="v3_strategy_daily_task", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/carter/kd_strategy/script/v3_strategy_daily_task.sh prod ", dag=dag)
 job_end_task = SSHOperator(task_id="job_end_task", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/carter/kd_strategy/script/monitor_end_task.sh prod ", dag=dag)
+rsync_kd_policy_position = SSHOperator(task_id="rsync_kd_policy_position", ssh_conn_id="kd05_keydriver",command=" sh /usr/lib/carter/kd_strategy/script/rsync_kd_policy_position.sh", dag=dag)
+
+
 trigger_daily_pm_task = TriggerDagRunOperator(task_id="trigger_pm_task",
                                               trigger_dag_id="KD05_kdalpha_daily_pm_task",
                                               trigger_rule="all_success", dag=dag)

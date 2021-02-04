@@ -5,13 +5,12 @@ from datetime import datetime
 
 
 default_args = {
-    'owner': 'kd01_stock'
+    'owner': 'afroot01'
 }
 
 dag = DAG(
     'stock_3minute_source_kd04',
     default_args=default_args,
-    description='stock_3minute_source_test',
     schedule_interval='0 */4 * * *',
     start_date=datetime(2020, 12, 22, 12, 0)
 )

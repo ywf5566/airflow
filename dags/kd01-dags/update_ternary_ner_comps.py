@@ -4,13 +4,12 @@ from airflow.operators.bash_operator import BashOperator
 from datetime import datetime
 
 default_args = {
-    'owner': 'kd01_event_news'
+    'owner': 'afroot01'
 }
 
 dag = DAG(
     'update_ternary_ner_comps',
     default_args=default_args,
-    description='update_ternary_ner_comps',
     schedule_interval='0 12 * * SAT',
     start_date=datetime(2020, 12, 20, 12, 0)
 )

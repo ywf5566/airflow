@@ -5,7 +5,7 @@ from airflow.utils.dates import days_ago
 from datetime import datetime
 import pytz
 default_args = {
-    'owner': 'kd01_update'
+    'owner': 'afroot01'
 }
 
 dag = DAG(

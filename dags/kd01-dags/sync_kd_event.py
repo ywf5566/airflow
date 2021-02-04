@@ -4,13 +4,12 @@ from airflow.operators.bash_operator import BashOperator
 from datetime import datetime
 
 default_args = {
-    'owner': 'kd01_event_news'
+    'owner': 'afroot01'
 }
 
 dag = DAG(
     'sync_kd_event',
     default_args=default_args,
-    description='sync_kd_event',
     schedule_interval='0 20 * * *',
     start_date=datetime(2020, 12, 21, 20, 0)
 )

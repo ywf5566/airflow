@@ -5,13 +5,12 @@ from airflow.utils.dates import days_ago
 from datetime import datetime,timedelta
 
 default_args = {
-    'owner': 'kd01_factor_repo', 'retries': 2, 'retry_delay': timedelta(minutes=1)
+    'owner': 'afroot01', 'retries': 2, 'retry_delay': timedelta(minutes=1)
 }
 
 dag = DAG(
     'KD-FACTOR-DEAP-AND-CHECK',
     default_args=default_args,
-    description='因子',
     catchup=False,
     schedule_interval=None,
     start_date=datetime(2020, 12, 21, 18, 40)

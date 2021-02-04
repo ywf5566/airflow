@@ -4,7 +4,7 @@ from airflow.operators.bash_operator import BashOperator
 from datetime import datetime
 
 default_args = {
-    'owner': 'kd01_news'
+    'owner': 'afroot01'
 }
 dag = DAG(
     'kd01_mina',

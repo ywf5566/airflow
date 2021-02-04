@@ -9,7 +9,7 @@ default_args = {'owner': 'afroot03','retries': 2, 'retry_delay': timedelta(minut
 
 dag = DAG('sync_minquota',
           default_args=default_args,
-          schedule_interval=None,
+          schedule_interval="15 17 * * *",
           catchup=False,
           start_date=datetime(2020, 12, 17, 17, 0))
 

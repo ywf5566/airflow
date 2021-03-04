@@ -3,6 +3,7 @@
 from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
+from airflow.contrib.operators.ssh_operator import SSHOperator
 
 default_args = {'owner': 'afroot03', 'retries': 2, 'retry_delay': timedelta(minutes=1)}
 
@@ -90,6 +91,8 @@ fac_daily_kd_deap_factor_92 = BashOperator(task_id="fac_daily_kd_deap_factor_92"
 fac_daily_kd_deap_factor_93 = BashOperator(task_id="fac_daily_kd_deap_factor_93", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 3531392 ", dag=dag, pool="factor")
 fac_daily_kd_deap_factor_94 = BashOperator(task_id="fac_daily_kd_deap_factor_94", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 3531393 ", dag=dag, pool="factor")
 check_all_factor = BashOperator(task_id="check_all_factor", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factors-check.sh ", dag=dag, pool="factor")
+# trigger kd01上执行的kd06的任务
+trigger_kd01_kd06_alphanet_0_0_1_task = SSHOperator(task_id="trigger_01_alphanet_0_0_1_task", ssh_conn_id="kd01_keydriver", command="source /home/keydriver/airflow/bin/activate;airflow trigger_dag kd06_alphanet_0_0_1_task ", dag=dag)
 
 check_qsdata >> [fac_daily_kd_deap_factor_8, fac_daily_kd_deap_factor_2, fac_daily_kd_deap_factor_3, fac_daily_kd_deap_factor_1, fac_daily_kd_deap_factor_6, fac_daily_kd_deap_factor_7, fac_daily_kd_deap_factor_4, fac_daily_kd_deap_factor_5, fac_daily_kd_deap_factor_18, fac_daily_kd_deap_factor_19, fac_daily_kd_deap_factor_23, fac_daily_kd_deap_factor_24, fac_daily_kd_deap_factor_25, fac_daily_kd_deap_factor_11, fac_daily_kd_deap_factor_12, fac_daily_kd_deap_factor_13, fac_daily_kd_deap_factor_14, fac_daily_kd_deap_factor_20, fac_daily_kd_deap_factor_16, fac_daily_kd_deap_factor_17]
 fac_daily_kd_deap_factor_52 >> [fac_daily_kd_deap_factor_78]
@@ -167,3 +170,4 @@ fac_daily_kd_deap_factor_60 >> [fac_daily_kd_deap_factor_85]
 fac_daily_kd_deap_factor_43 >> [fac_daily_kd_deap_factor_72]
 fac_daily_kd_deap_factor_80 >> [check_all_factor]
 fac_daily_kd_deap_factor_37 >> [fac_daily_kd_deap_factor_66]
+check_all_factor >> trigger_kd01_kd06_alphanet_0_0_1_task

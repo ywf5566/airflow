@@ -90,6 +90,104 @@ fac_daily_kd_deap_factor_91 = BashOperator(task_id="fac_daily_kd_deap_factor_91"
 fac_daily_kd_deap_factor_92 = BashOperator(task_id="fac_daily_kd_deap_factor_92", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 3531391 ", dag=dag, pool="factor")
 fac_daily_kd_deap_factor_93 = BashOperator(task_id="fac_daily_kd_deap_factor_93", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 3531392 ", dag=dag, pool="factor")
 fac_daily_kd_deap_factor_94 = BashOperator(task_id="fac_daily_kd_deap_factor_94", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 3531393 ", dag=dag, pool="factor")
+
+fac_daily_kd_deap_factor_5948155 = BashOperator(task_id="fac_daily_kd_deap_factor_5948155", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948155 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948156 = BashOperator(task_id="fac_daily_kd_deap_factor_5948156", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948156 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948157 = BashOperator(task_id="fac_daily_kd_deap_factor_5948157", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948157 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948158 = BashOperator(task_id="fac_daily_kd_deap_factor_5948158", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948158 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948159 = BashOperator(task_id="fac_daily_kd_deap_factor_5948159", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948159 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948160 = BashOperator(task_id="fac_daily_kd_deap_factor_5948160", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948160 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948161 = BashOperator(task_id="fac_daily_kd_deap_factor_5948161", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948161 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948162 = BashOperator(task_id="fac_daily_kd_deap_factor_5948162", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948162 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948163 = BashOperator(task_id="fac_daily_kd_deap_factor_5948163", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948163 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948164 = BashOperator(task_id="fac_daily_kd_deap_factor_5948164", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948164 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948165 = BashOperator(task_id="fac_daily_kd_deap_factor_5948165", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948165 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948166 = BashOperator(task_id="fac_daily_kd_deap_factor_5948166", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948166 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948167 = BashOperator(task_id="fac_daily_kd_deap_factor_5948167", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948167 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948168 = BashOperator(task_id="fac_daily_kd_deap_factor_5948168", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948168 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948169 = BashOperator(task_id="fac_daily_kd_deap_factor_5948169", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948169 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948170 = BashOperator(task_id="fac_daily_kd_deap_factor_5948170", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948170 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948171 = BashOperator(task_id="fac_daily_kd_deap_factor_5948171", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948171 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948172 = BashOperator(task_id="fac_daily_kd_deap_factor_5948172", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948172 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948173 = BashOperator(task_id="fac_daily_kd_deap_factor_5948173", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948173 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948174 = BashOperator(task_id="fac_daily_kd_deap_factor_5948174", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948174 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948175 = BashOperator(task_id="fac_daily_kd_deap_factor_5948175", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948175 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948176 = BashOperator(task_id="fac_daily_kd_deap_factor_5948176", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948176 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948177 = BashOperator(task_id="fac_daily_kd_deap_factor_5948177", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948177 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948178 = BashOperator(task_id="fac_daily_kd_deap_factor_5948178", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948178 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948179 = BashOperator(task_id="fac_daily_kd_deap_factor_5948179", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948179 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948180 = BashOperator(task_id="fac_daily_kd_deap_factor_5948180", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948180 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948181 = BashOperator(task_id="fac_daily_kd_deap_factor_5948181", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948181 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948182 = BashOperator(task_id="fac_daily_kd_deap_factor_5948182", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948182 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948183 = BashOperator(task_id="fac_daily_kd_deap_factor_5948183", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948183 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948184 = BashOperator(task_id="fac_daily_kd_deap_factor_5948184", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948184 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948185 = BashOperator(task_id="fac_daily_kd_deap_factor_5948185", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948185 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948186 = BashOperator(task_id="fac_daily_kd_deap_factor_5948186", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948186 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948187 = BashOperator(task_id="fac_daily_kd_deap_factor_5948187", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948187 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948188 = BashOperator(task_id="fac_daily_kd_deap_factor_5948188", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948188 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948189 = BashOperator(task_id="fac_daily_kd_deap_factor_5948189", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948189 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948190 = BashOperator(task_id="fac_daily_kd_deap_factor_5948190", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948190 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948191 = BashOperator(task_id="fac_daily_kd_deap_factor_5948191", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948191 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948192 = BashOperator(task_id="fac_daily_kd_deap_factor_5948192", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948192 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948193 = BashOperator(task_id="fac_daily_kd_deap_factor_5948193", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948193 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948194 = BashOperator(task_id="fac_daily_kd_deap_factor_5948194", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948194 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948195 = BashOperator(task_id="fac_daily_kd_deap_factor_5948195", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948195 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948196 = BashOperator(task_id="fac_daily_kd_deap_factor_5948196", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948196 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948197 = BashOperator(task_id="fac_daily_kd_deap_factor_5948197", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948197 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948198 = BashOperator(task_id="fac_daily_kd_deap_factor_5948198", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948198 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948199 = BashOperator(task_id="fac_daily_kd_deap_factor_5948199", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948199 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948200 = BashOperator(task_id="fac_daily_kd_deap_factor_5948200", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948200 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948201 = BashOperator(task_id="fac_daily_kd_deap_factor_5948201", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948201 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948202 = BashOperator(task_id="fac_daily_kd_deap_factor_5948202", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948202 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948203 = BashOperator(task_id="fac_daily_kd_deap_factor_5948203", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948203 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948204 = BashOperator(task_id="fac_daily_kd_deap_factor_5948204", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948204 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948205 = BashOperator(task_id="fac_daily_kd_deap_factor_5948205", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948205 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948206 = BashOperator(task_id="fac_daily_kd_deap_factor_5948206", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948206 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948207 = BashOperator(task_id="fac_daily_kd_deap_factor_5948207", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948207 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948208 = BashOperator(task_id="fac_daily_kd_deap_factor_5948208", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948208 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948209 = BashOperator(task_id="fac_daily_kd_deap_factor_5948209", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948209 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948210 = BashOperator(task_id="fac_daily_kd_deap_factor_5948210", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948210 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948211 = BashOperator(task_id="fac_daily_kd_deap_factor_5948211", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948211 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948212 = BashOperator(task_id="fac_daily_kd_deap_factor_5948212", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948212 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948213 = BashOperator(task_id="fac_daily_kd_deap_factor_5948213", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948213 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948214 = BashOperator(task_id="fac_daily_kd_deap_factor_5948214", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948214 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948215 = BashOperator(task_id="fac_daily_kd_deap_factor_5948215", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948215 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948216 = BashOperator(task_id="fac_daily_kd_deap_factor_5948216", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948216 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948217 = BashOperator(task_id="fac_daily_kd_deap_factor_5948217", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948217 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948218 = BashOperator(task_id="fac_daily_kd_deap_factor_5948218", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948218 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948219 = BashOperator(task_id="fac_daily_kd_deap_factor_5948219", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948219 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948220 = BashOperator(task_id="fac_daily_kd_deap_factor_5948220", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948220 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948221 = BashOperator(task_id="fac_daily_kd_deap_factor_5948221", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948221 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948222 = BashOperator(task_id="fac_daily_kd_deap_factor_5948222", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948222 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948223 = BashOperator(task_id="fac_daily_kd_deap_factor_5948223", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948223 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948224 = BashOperator(task_id="fac_daily_kd_deap_factor_5948224", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948224 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948225 = BashOperator(task_id="fac_daily_kd_deap_factor_5948225", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948225 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948226 = BashOperator(task_id="fac_daily_kd_deap_factor_5948226", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948226 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948227 = BashOperator(task_id="fac_daily_kd_deap_factor_5948227", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948227 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948228 = BashOperator(task_id="fac_daily_kd_deap_factor_5948228", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948228 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948229 = BashOperator(task_id="fac_daily_kd_deap_factor_5948229", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948229 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948230 = BashOperator(task_id="fac_daily_kd_deap_factor_5948230", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948230 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948231 = BashOperator(task_id="fac_daily_kd_deap_factor_5948231", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948231 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948232 = BashOperator(task_id="fac_daily_kd_deap_factor_5948232", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948232 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948233 = BashOperator(task_id="fac_daily_kd_deap_factor_5948233", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948233 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948234 = BashOperator(task_id="fac_daily_kd_deap_factor_5948234", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948234 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948235 = BashOperator(task_id="fac_daily_kd_deap_factor_5948235", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948235 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948236 = BashOperator(task_id="fac_daily_kd_deap_factor_5948236", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948236 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948237 = BashOperator(task_id="fac_daily_kd_deap_factor_5948237", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948237 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948238 = BashOperator(task_id="fac_daily_kd_deap_factor_5948238", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948238 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948239 = BashOperator(task_id="fac_daily_kd_deap_factor_5948239", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948239 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948240 = BashOperator(task_id="fac_daily_kd_deap_factor_5948240", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948240 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948241 = BashOperator(task_id="fac_daily_kd_deap_factor_5948241", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948241 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948242 = BashOperator(task_id="fac_daily_kd_deap_factor_5948242", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948242 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948243 = BashOperator(task_id="fac_daily_kd_deap_factor_5948243", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948243 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948244 = BashOperator(task_id="fac_daily_kd_deap_factor_5948244", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948244 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948245 = BashOperator(task_id="fac_daily_kd_deap_factor_5948245", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948245 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948246 = BashOperator(task_id="fac_daily_kd_deap_factor_5948246", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948246 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948247 = BashOperator(task_id="fac_daily_kd_deap_factor_5948247", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948247 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948248 = BashOperator(task_id="fac_daily_kd_deap_factor_5948248", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948248 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948249 = BashOperator(task_id="fac_daily_kd_deap_factor_5948249", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948249 ", dag=dag, pool="factor")
+fac_daily_kd_deap_factor_5948250 = BashOperator(task_id="fac_daily_kd_deap_factor_5948250", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5948250 ", dag=dag, pool="factor")
+
 check_all_factor = BashOperator(task_id="check_all_factor", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factors-check.sh ", dag=dag, pool="factor")
 # trigger kd01上执行的kd06的任务
 trigger_kd01_kd06_alphanet_0_0_1_task = SSHOperator(task_id="trigger_01_alphanet_0_0_1_task", ssh_conn_id="kd01_keydriver", command="source /home/keydriver/airflow/bin/activate;airflow trigger_dag kd06_alphanet_0_0_1_task ", dag=dag)
@@ -156,12 +254,12 @@ fac_daily_kd_deap_factor_94 >> [check_all_factor]
 fac_daily_kd_deap_factor_70 >> [fac_daily_kd_deap_factor_93]
 fac_daily_kd_deap_factor_78 >> [check_all_factor]
 fac_daily_kd_deap_factor_33 >> [fac_daily_kd_deap_factor_60]
-fac_daily_kd_deap_factor_76 >> [check_all_factor]
-fac_daily_kd_deap_factor_77 >> [check_all_factor]
-fac_daily_kd_deap_factor_74 >> [check_all_factor]
-fac_daily_kd_deap_factor_75 >> [check_all_factor]
-fac_daily_kd_deap_factor_72 >> [check_all_factor]
-fac_daily_kd_deap_factor_73 >> [check_all_factor]
+fac_daily_kd_deap_factor_76 >> fac_daily_kd_deap_factor_5948156 >> [check_all_factor]
+fac_daily_kd_deap_factor_77 >> fac_daily_kd_deap_factor_5948160 >> [check_all_factor]
+fac_daily_kd_deap_factor_74 >> fac_daily_kd_deap_factor_5948158 >> [check_all_factor]
+fac_daily_kd_deap_factor_75 >> fac_daily_kd_deap_factor_5948159 >> [check_all_factor]
+fac_daily_kd_deap_factor_72 >> fac_daily_kd_deap_factor_5948155 >> [check_all_factor]
+fac_daily_kd_deap_factor_73 >> fac_daily_kd_deap_factor_5948157 >> [check_all_factor]
 fac_daily_kd_deap_factor_32 >> [fac_daily_kd_deap_factor_59]
 fac_daily_kd_deap_factor_71 >> [fac_daily_kd_deap_factor_94]
 fac_daily_kd_deap_factor_66 >> [fac_daily_kd_deap_factor_89]
@@ -169,5 +267,28 @@ fac_daily_kd_deap_factor_56 >> [fac_daily_kd_deap_factor_81]
 fac_daily_kd_deap_factor_60 >> [fac_daily_kd_deap_factor_85]
 fac_daily_kd_deap_factor_43 >> [fac_daily_kd_deap_factor_72]
 fac_daily_kd_deap_factor_80 >> [check_all_factor]
+check_qsdata >> fac_daily_kd_deap_factor_5948161 >> fac_daily_kd_deap_factor_5948162 >> fac_daily_kd_deap_factor_5948163 >> fac_daily_kd_deap_factor_5948164 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948165 >> fac_daily_kd_deap_factor_5948166 >> fac_daily_kd_deap_factor_5948167 >> fac_daily_kd_deap_factor_5948168 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948169 >> fac_daily_kd_deap_factor_5948170 >> fac_daily_kd_deap_factor_5948171 >> fac_daily_kd_deap_factor_5948172 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948173 >> fac_daily_kd_deap_factor_5948174 >> fac_daily_kd_deap_factor_5948175 >> fac_daily_kd_deap_factor_5948176 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948177 >> fac_daily_kd_deap_factor_5948178 >> fac_daily_kd_deap_factor_5948179 >> fac_daily_kd_deap_factor_5948180 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948181 >> fac_daily_kd_deap_factor_5948182 >> fac_daily_kd_deap_factor_5948183 >> fac_daily_kd_deap_factor_5948184 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948185 >> fac_daily_kd_deap_factor_5948186 >> fac_daily_kd_deap_factor_5948187 >> fac_daily_kd_deap_factor_5948188 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948189 >> fac_daily_kd_deap_factor_5948190 >> fac_daily_kd_deap_factor_5948191 >> fac_daily_kd_deap_factor_5948192 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948193 >> fac_daily_kd_deap_factor_5948194 >> fac_daily_kd_deap_factor_5948195 >> fac_daily_kd_deap_factor_5948196 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948197 >> fac_daily_kd_deap_factor_5948198 >> fac_daily_kd_deap_factor_5948199 >> fac_daily_kd_deap_factor_5948200 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948201 >> fac_daily_kd_deap_factor_5948202 >> fac_daily_kd_deap_factor_5948203 >> fac_daily_kd_deap_factor_5948204 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948205 >> fac_daily_kd_deap_factor_5948206 >> fac_daily_kd_deap_factor_5948207 >> fac_daily_kd_deap_factor_5948208 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948209 >> fac_daily_kd_deap_factor_5948210 >> fac_daily_kd_deap_factor_5948211 >> fac_daily_kd_deap_factor_5948212 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948213 >> fac_daily_kd_deap_factor_5948214 >> fac_daily_kd_deap_factor_5948215 >> fac_daily_kd_deap_factor_5948216 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948217 >> fac_daily_kd_deap_factor_5948218 >> fac_daily_kd_deap_factor_5948219 >> fac_daily_kd_deap_factor_5948220 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948221 >> fac_daily_kd_deap_factor_5948222 >> fac_daily_kd_deap_factor_5948223 >> fac_daily_kd_deap_factor_5948224 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948225 >> fac_daily_kd_deap_factor_5948226 >> fac_daily_kd_deap_factor_5948227 >> fac_daily_kd_deap_factor_5948228 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948229 >> fac_daily_kd_deap_factor_5948230 >> fac_daily_kd_deap_factor_5948231 >> fac_daily_kd_deap_factor_5948232 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948233 >> fac_daily_kd_deap_factor_5948234 >> fac_daily_kd_deap_factor_5948235 >> fac_daily_kd_deap_factor_5948236 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948237 >> fac_daily_kd_deap_factor_5948238 >> fac_daily_kd_deap_factor_5948239 >> fac_daily_kd_deap_factor_5948240 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948241 >> fac_daily_kd_deap_factor_5948242 >> fac_daily_kd_deap_factor_5948243 >> fac_daily_kd_deap_factor_5948244 >> fac_daily_kd_deap_factor_5948249 >> check_all_factor
+check_qsdata >> fac_daily_kd_deap_factor_5948245 >> fac_daily_kd_deap_factor_5948246 >> fac_daily_kd_deap_factor_5948247 >> fac_daily_kd_deap_factor_5948248  >> fac_daily_kd_deap_factor_5948250 >> check_all_factor
+
 fac_daily_kd_deap_factor_37 >> [fac_daily_kd_deap_factor_66]
 check_all_factor >> trigger_kd01_kd06_alphanet_0_0_1_task

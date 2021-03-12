@@ -203,7 +203,7 @@ trigger_deap_and_check = TriggerDagRunOperator(
 
 trigger_Interday_alpha_daily = TriggerDagRunOperator(
     task_id="trigger_Interday_alpha_daily",
-    trigger_dag_id="Interday_alpha_daily",
+    trigger_dag_id="KD05_Interday_alpha_daily",
     trigger_rule='all_success',
     dag=dag,
     pool="factor"

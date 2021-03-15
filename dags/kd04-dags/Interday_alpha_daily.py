@@ -39,7 +39,7 @@ check_qsdata = SSHOperator(task_id="kd05_check_qsdata", ssh_conn_id="kd05_keydri
 l2_data_check = SSHOperator(task_id="kd05_l2_data_check", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-repo-dep-check.sh check_l2_data ", dag=dag, pool="factor")
 daily_feature_cal = SSHOperator(task_id="kd05_daily_feature_cal", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_daily_cal.sh ", dag=dag,pool="factor")
 convert_pkl = SSHOperator(task_id="kd05_convert_pkl", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_hdf2pkl.sh ", dag=dag,pool="factor")
-save_feature_to_es = SSHOperator(task_id="kd05_save_feature_to_es", command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_pkl2es.sh ", dag=dag,pool="factor")
+save_feature_to_es = SSHOperator(task_id="kd05_save_feature_to_es", ssh_conn_id="kd05_keydriver", command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_pkl2es.sh ", dag=dag,pool="factor")
 interday_alpha_universe = SSHOperator(task_id="kd05_interday_alpha_universe", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_universe_ti0.sh ", dag=dag,pool="factor")
 interday_alpha_ti0 = SSHOperator(task_id="kd05_interday_alpha_ti0", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_factor_ti0.sh ", dag=dag,pool="factor")
 factor_check_ti0 = SSHOperator(task_id="kd05_factor_check_ti0", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check_ti0.sh ", dag=dag,pool="factor")

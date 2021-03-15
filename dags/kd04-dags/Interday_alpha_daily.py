@@ -8,6 +8,7 @@ from monitor.core.send_message import MSG_HEAD
 from monitor.core.send_message import MSG_LEVEL
 import os
 from airflow.contrib.operators.ssh_operator import SSHOperator
+from airflow.operators.dagrun_operator import TriggerDagRunOperator
 
 
 default_args = {'owner': 'afroot04'}
@@ -37,15 +38,13 @@ dag = DAG('KD05_Interday_alpha_daily',
 
 check_qsdata = SSHOperator(task_id="kd05_check_qsdata", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-repo-dep-check.sh check_qsdata ", dag=dag, pool="factor")
 l2_data_check = SSHOperator(task_id="kd05_l2_data_check", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-repo-dep-check.sh check_l2_data ", dag=dag, pool="factor")
-daily_feature_cal = SSHOperator(task_id="kd05_daily_feature_cal", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_daily_cal.sh ", dag=dag,pool="factor")
+daily_feature_cal = SSHOperator(task_id="kd05_daily_feature_cal", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_daily_cal.sh ", dag=dag, pool="factor")
 convert_pkl = SSHOperator(task_id="kd05_convert_pkl", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_hdf2pkl.sh ", dag=dag,pool="factor")
-save_feature_to_es = SSHOperator(task_id="kd05_save_feature_to_es", ssh_conn_id="kd05_keydriver", command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_pkl2es.sh ", dag=dag,pool="factor")
-interday_alpha_universe = SSHOperator(task_id="kd05_interday_alpha_universe", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_universe_ti0.sh ", dag=dag,pool="factor")
-interday_alpha_ti0 = SSHOperator(task_id="kd05_interday_alpha_ti0", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_factor_ti0.sh ", dag=dag,pool="factor")
-factor_check_ti0 = SSHOperator(task_id="kd05_factor_check_ti0", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check_ti0.sh ", dag=dag,pool="factor")
-# factor_kd05_ti0 = BashOperator(task_id="factor_kd05_ti0", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_kd05_ti0.sh ", dag=dag)
-# factors_check_ti0_kd05 = BashOperator(task_id="factors_check_ti0_kd05", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check_ti0_kd05.sh ", dag=dag)
-# trigger_kd04_strategy = SSHOperator(task_id="trigger_kd04_strategy", ssh_conn_id="kd04_keydriver", command="source /home/keydriver/airflow/bin/activate;airflow trigger_dag KD05_kd_strategy ", dag=dag)
+save_feature_to_es = SSHOperator(task_id="kd05_save_feature_to_es", ssh_conn_id="kd05_keydriver", command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_pkl2es.sh ", dag=dag, pool="factor")
+interday_alpha_universe = SSHOperator(task_id="kd05_interday_alpha_universe", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_universe_ti0.sh ", dag=dag, pool="factor")
+interday_alpha_ti0 = SSHOperator(task_id="kd05_interday_alpha_ti0", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_factor_ti0.sh ", dag=dag, pool="factor")
+factor_check_ti0 = SSHOperator(task_id="kd05_factor_check_ti0", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check_ti0.sh ", dag=dag, pool="factor")
+trigger_kd04_strategy = TriggerDagRunOperator(task_id="trigger_kd04_strategy", trigger_dag_id='KD05_kd_strategy', trigger_rule='all_success', dag=dag)
 
 """ tio任务结束后触发kd04的strategy任务 """
-check_qsdata >> l2_data_check >> daily_feature_cal >> convert_pkl >> save_feature_to_es >> interday_alpha_universe >> interday_alpha_ti0 >>factor_check_ti0
+check_qsdata >> l2_data_check >> daily_feature_cal >> convert_pkl >> save_feature_to_es >> interday_alpha_universe >> interday_alpha_ti0 >> factor_check_ti0 >> trigger_kd04_strategy

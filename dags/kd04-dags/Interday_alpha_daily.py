@@ -44,7 +44,12 @@ save_feature_to_es = SSHOperator(task_id="kd05_save_feature_to_es", ssh_conn_id=
 interday_alpha_universe = SSHOperator(task_id="kd05_interday_alpha_universe", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_universe_ti0.sh ", dag=dag, pool="factor")
 interday_alpha_ti0 = SSHOperator(task_id="kd05_interday_alpha_ti0", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_factor_ti0.sh ", dag=dag, pool="factor")
 factor_check_ti0 = SSHOperator(task_id="kd05_factor_check_ti0", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check_ti0.sh ", dag=dag, pool="factor")
+""" 午盘因子任务 """
+kd05_midday_factor = SSHOperator(task_id="kd05_midday_factor", ssh_conn_id="kd05_keydriver", command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_mid_factor.sh ", dag=dag, pool="factor")
+kd05_midday_factor_check = SSHOperator(task_id="kd05_midday_factor_check", ssh_conn_id="kd05_keydriver", command="sh usr/lib/quant/factor/interday_alpha/scripts/factors_check.sh ", dag=dag, pool="factor")
+
 trigger_kd04_strategy = TriggerDagRunOperator(task_id="trigger_kd04_strategy", trigger_dag_id='KD05_kd_strategy', trigger_rule='all_success', dag=dag)
 
 """ tio任务结束后触发kd04的strategy任务 """
 check_qsdata >> l2_data_check >> daily_feature_cal >> convert_pkl >> save_feature_to_es >> interday_alpha_universe >> interday_alpha_ti0 >> factor_check_ti0 >> trigger_kd04_strategy
+interday_alpha_universe >> kd05_midday_factor >> kd05_midday_factor_check >> trigger_kd04_strategy

@@ -33,6 +33,6 @@ dag = DAG('Interday_alpha_realtime',
           start_date=datetime(2020, 12, 17, 10, 40), on_failure_callback=callBack.on_dag_failure)
 realtime_cal_factor = BashOperator(task_id="realtime_cal_factor", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_realtime.sh ", dag=dag)
 factor_check = BashOperator(task_id="factor_check", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check.sh ", dag=dag)
-factor_kd05 = BashOperator(task_id="factor_kd05", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_kd05.sh ", dag=dag)
-factors_check_kd05 = BashOperator(task_id="factors_check_kd05", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check_kd05.sh ", dag=dag)
-realtime_cal_factor >> factor_check >> factor_kd05 >> factors_check_kd05
+# factor_kd05 = BashOperator(task_id="factor_kd05", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_kd05.sh ", dag=dag)
+# factors_check_kd05 = BashOperator(task_id="factors_check_kd05", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check_kd05.sh ", dag=dag)
+realtime_cal_factor >> factor_check

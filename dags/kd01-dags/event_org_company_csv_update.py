@@ -7,7 +7,7 @@ default_args = {
     'owner': 'aftoot01',
 }
 dag = DAG(
-    'vent_org_company_csv_update',
+    'event_org_company_csv_update',
     default_args=default_args,
     description='event_org_company_csv_update',
     schedule_interval='15 */3 * * *',

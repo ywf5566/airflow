@@ -15,4 +15,4 @@ dag = DAG(
 )
 # ==========================================================tasks======================================================
 event_org_company_csv_update = BashOperator(task_id="event_org_company_csv_update", bash_command="sh /usr/lib/carter/separateDagobahTask/scripts/KeydriverdbProd/updateEventOrgCompany.sh ", dag=dag)
-sync_kd_security_info = BashOperator(task_id="sync_kd_security_info", bash_command="sh /usr/lib/carter/separateDagobahTask/scripts/KeydriverdbProd/syncKdSecurityInfo.sh ")
+sync_kd_security_info = BashOperator(task_id="sync_kd_security_info", bash_command="sh /usr/lib/carter/separateDagobahTask/scripts/KeydriverdbProd/syncKdSecurityInfo.sh ", dag=dag)

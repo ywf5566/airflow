@@ -45,7 +45,8 @@ save_feature_to_es = BashOperator(task_id="save_feature_to_es", bash_command="sh
 interday_alpha_universe = BashOperator(task_id="interday_alpha_universe", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_universe_ti0.sh ", dag=dag)
 interday_alpha_ti0 = BashOperator(task_id="interday_alpha_ti0", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_factor_ti0.sh ", dag=dag)
 factor_check_ti0 = BashOperator(task_id="factor_check_ti0", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check_ti0.sh ", dag=dag)
-realtime_cal_factor = BashOperator(task_id="realtime_cal_factor", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_realtime.sh ", dag=dag)
+# 添加午盘因子的task
+realtime_cal_factor = BashOperator(task_id="realtime_cal_factor", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_mid_factor.sh ", dag=dag)
 factor_check = BashOperator(task_id="factor_check", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check.sh ", dag=dag)
 
 

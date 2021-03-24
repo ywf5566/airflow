@@ -45,7 +45,11 @@ save_feature_to_es = BashOperator(task_id="save_feature_to_es", bash_command="sh
 interday_alpha_universe = BashOperator(task_id="interday_alpha_universe", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_universe_ti0.sh ", dag=dag)
 interday_alpha_ti0 = BashOperator(task_id="interday_alpha_ti0", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_factor_ti0.sh ", dag=dag)
 factor_check_ti0 = BashOperator(task_id="factor_check_ti0", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check_ti0.sh ", dag=dag)
+realtime_cal_factor = BashOperator(task_id="realtime_cal_factor", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_realtime.sh ", dag=dag)
+factor_check = BashOperator(task_id="factor_check", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check.sh ", dag=dag)
+
+
 # trigger_kd04_strategy = SSHOperator(task_id="trigger_kd04_strategy", ssh_conn_id="kd04_keydriver", command="source /home/keydriver/airflow/bin/activate;airflow trigger_dag KD05_kd_strategy ", dag=dag)
 
-""" tio任务结束后触发kd04的strategy任务 """
 check_qsdata >> l2_data_check >> daily_feature_cal >> convert_pkl >> save_feature_to_es >> interday_alpha_universe >> interday_alpha_ti0 >> factor_check_ti0
+interday_alpha_universe >> realtime_cal_factor >> factor_check

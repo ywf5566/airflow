@@ -25,6 +25,14 @@ kd_check = BashOperator(task_id="kd_check", bash_command="sh /usr/lib/carter/kdc
 sync_org_id_to_kdcode = BashOperator(task_id="sync_org_id_to_kdcode", bash_command="sh /usr/lib/carter/dbsync/scripts/sync_org_id_to_kdcode.sh ", dag=dag)
 sync_stock_adjfactor = BashOperator(task_id="sync_stock_adjfactor", bash_command="sh /usr/lib/carter/dbsync/scripts/sync_stock_adjfactor.sh ", dag=dag)
 
+# 加入 sync_minquota 和 qsdata_update
+sync_minquota = BashOperator(task_id="sync_minquota",
+                             bash_command="sh /usr/lib/carter/dbsync/scripts/sync_minquota.sh ", dag=dag)
+update_qsdata = BashOperator(task_id="update_qsdata",
+                             bash_command="sh /usr/lib/carter/dbsync/scripts/update_qsdata.sh ", dag=dag)
+trigger_kd04_factor = TriggerDagRunOperator(task_id="trigger_factor_normal", trigger_dag_id="KD05_FACTOR_LEVEL2_AND_NORMAL", trigger_rule="all_success", dag=dag)
+
+
 eod_table >> [sync_kdb_dayquota_at_5pm]
 sync_kdb_sw_industry >> [check_em_sw_index]
 sync_trading_halt_quota >> [kd_check, sync_org_id_to_kdcode, sync_stock_adjfactor]
@@ -33,3 +41,5 @@ sync_stock_st >> [eod_table]
 sync_stock_suspended >> [eod_table]
 check_em_sw_index >> [eod_table]
 em_sw_index >> [check_em_sw_index]
+
+[sync_stock_adjfactor, sync_org_id_to_kdcode, kd_check, sync_minquota] >> update_qsdata >> trigger_kd04_factor

@@ -1,15 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from datetime import datetime
+from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.contrib.operators.ssh_operator import SSHOperator
 
-default_args = {'owner': 'afroot04'}
+default_args = {'owner': 'afroot04', 'retries': 2, 'retry_delay': timedelta(minutes=1)}
+
 dag = DAG('KD05_kdalpha_daily_am_task',
           default_args=default_args,
-          schedule_interval='45 9 * * *',
+          schedule_interval=None,
           catchup=False,
-          start_date=datetime(2020, 12, 24, 16, 0))
+          start_date=datetime(2021, 3, 25, 9, 0))
 
 kdalpha_am_start_task = SSHOperator(task_id="kdalpha_am_start_task", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/carter/kd_strategy/script/kdalpha_am_start_task.sh prod ", dag=dag)
 kdalpha_daily_am_task = SSHOperator(task_id="kdalpha_daily_am_task", ssh_conn_id="kd05_keydriver",command="sh /usr/lib/carter/kd_strategy/script/kdalpha_strategy_daily_am_task.sh prod ", dag=dag)

@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from datetime import datetime
+from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
 
-default_args = {'owner': 'afroot04'}
+default_args = {'owner': 'afroot04', 'retries': 2, 'retry_delay': timedelta(minutes=1)}
 dag = DAG('emoney_stock_quotes',
           default_args=default_args,
           schedule_interval='39 9 * * *',

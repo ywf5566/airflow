@@ -200,7 +200,7 @@ fac_daily_em_quote_close = SSHOperator(task_id="fac_daily_em_quote_close", ssh_c
 trigger_deap_and_check = TriggerDagRunOperator(
     task_id='trigger_deap_and_check',
     trigger_dag_id='KD05_FACTOR_DEAP_AND_CHECK',
-    trigger_rule='all_done',
+    trigger_rule='all_success',
     dag=dag,
     pool="factor"
 )

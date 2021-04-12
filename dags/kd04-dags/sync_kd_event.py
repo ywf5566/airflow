@@ -56,9 +56,9 @@ event_stock_meeting = BashOperator(task_id="event_stock_meeting",
 # event_indicator_change = BashOperator(task_id="event_indicator_change",
 #                                       bash_command="sh /usr/lib/carter/kd_event/scripts/event_indicator_change.sh ",
 #                                       dag=dag)
-event_creadit_rating = BashOperator(task_id="event_creadit_rating",
-                                    bash_command="sh /usr/lib/carter/kd_event/scripts/exe_event_pipeline.sh stock_credit_rating_pipeline.py ",
-                                    dag=dag)
+# event_creadit_rating = BashOperator(task_id="event_creadit_rating",
+#                                     bash_command="sh /usr/lib/carter/kd_event/scripts/exe_event_pipeline.sh stock_credit_rating_pipeline.py ",
+#                                     dag=dag)
 event_stock_repurchase = BashOperator(task_id="event_stock_repurchase",
                                       bash_command="sh /usr/lib/carter/kd_event/scripts/exe_event_pipeline_dev.sh stock_repurchase_pipeline.py ",
                                       dag=dag)
@@ -80,5 +80,5 @@ event_mgt_data >> [event_wechat]
 event_share_holding >> [event_wechat]
 event_acceptance_of_bid >> [event_wechat]
 event_stock_asset_regroup >> [event_wechat]
-event_creadit_rating >> [event_wechat]
+
 event_stock_repurchase >> [event_wechat]

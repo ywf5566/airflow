@@ -15,11 +15,14 @@ default_args = {'owner': 'afroot04'}
 
 
 class callBack:
+    mesg_head = MSG_HEAD
+    msg_level = MSG_LEVEL
+
     def on_dag_failure(self):
         os['kdconfig'] = '/home/keydriver/airflow/kd_airflow/dags/database.yaml'
         send_message(msg_id='FACTOR_DAILY_RESULT',
-                     msg_head=MSG_HEAD,
-                     msg_level=MSG_LEVEL.CRITICAL.value,
+                     msg_head=self.mesg_head,
+                     msg_level=self.msg_level.CRITICAL.value,
                      service='因子库',
                      msg_type='服务运行结果正确性检查',
                      msg_description='因子库脚本运行失败！',

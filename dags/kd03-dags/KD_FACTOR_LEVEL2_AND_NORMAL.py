@@ -211,15 +211,18 @@ fac_daily_l2_actnetinflow_turnover_proptinall_openclose_delta = BashOperator(tas
 fac_daily_l2_contrade_tunrover_activebuy_propt_tsz20 = BashOperator(task_id="fac_daily_l2_contrade_tunrover_activebuy_propt_tsz20", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 3885605 ", dag=dag, pool="factor")
 fac_daily_em_quote_addposdays10 = BashOperator(task_id="fac_daily_em_quote_addposdays10", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5655788 ", dag=dag, pool="factor")
 fac_daily_em_quote_close = BashOperator(task_id="fac_daily_em_quote_close", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5655802 ", dag=dag, pool="factor")
-# 20210226新增
+# 20210226新增em因子
 fac_daily_naor_yoy = BashOperator(task_id="fac_daily_naor_yoy", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5913912 ", dag=dag, pool="factor")
 fac_daily_to_ratio_20to500 = BashOperator(task_id="fac_daily_to_ratio_20to500", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5913917 ", dag=dag, pool="factor")
 fac_daily_btop = BashOperator(task_id="fac_daily_btop", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5931694 ", dag=dag, pool="factor")
 
+# 20210423新增l2因子报告
+l2_factor_daily_reported = BashOperator(task_id="l2_factor_daily_reported", bash_command="sh /usr/lib/quant/factor/smart_style/daily_report.sh ", dag=dag, pool="factor")
+
 trigger_deap_and_check = TriggerDagRunOperator(
     task_id='trigger_deap_and_check',
     trigger_dag_id='KD-FACTOR-DEAP-AND-CHECK',
-    trigger_rule='all_done',
+    trigger_rule='all_success',
     dag=dag,
     pool="factor"
 )
@@ -250,7 +253,7 @@ fac_daily_l2_actbsdelta_ordercnt >> [fac_daily_l2_madsmall_netinflow_turnover_pr
                                      fac_daily_l2_mainforce_turnover_active_propt_closecorr10,
                                      fac_daily_l2_madsmall_turnover_netinflow_propt_closecorr10, fac_daily_l2_mainforce_activebuy_turnover_closecorr10, fac_daily_l2_actnetinflow_turnover_closecorr10, fac_daily_l2_small_buy_turnover_pertrans_closecorr10, fac_daily_l2_madsmall_activesell_turnover_closecorr10, fac_daily_l2_madlarge_activesell_turnover_closecorr10, fac_daily_l2_small_psvnetinflow_turnover_proptinall_m10, fac_daily_l2_mainforce_passivebuy_turnover_closecorr10, fac_daily_l2_madsmall_turnover_active_propt_closecorr10, fac_daily_l2_small_netinflow_turnover_proptinall_closecorr10, fac_daily_l2_small_passivebuy_turnover_closecorr10, fac_daily_l2_firstn_mainforce_turnover_closecorr10, fac_daily_l2_firstn_mainforce_turnover_netinflow_propt_m10, fac_daily_l2_firstn_mainforce_sell_turnover_closecorr10, fac_daily_l2_activebuy_turnover_closecorr10, fac_daily_l2_madlarge_activebuy_turnover_closecorr10, fac_daily_l2_activesell_turnover_closecorr10, fac_daily_l2_actnetinflow_turnover_proptinall_closecorr10, fac_daily_l2_firstn_mainforce_buy_turnover_closecorr10, fac_daily_l2_actbsdelta_volume_proptinall_mptorate, fac_daily_l2_turnover_madsmall_propt_closecorr10, fac_daily_l2_firstn_mf_ntfl_to_proptinall_closecorr10, fac_daily_l2_turnover_mainforce_propt_closecorr10, fac_daily_l2_small_activesell_turnover_closecorr10, fac_daily_l2_madl_ntfl_to_actntfl_propt_closecorr10, fac_daily_l2_madlarge_netinflow_turnover_closecorr10, fac_daily_l2_mainforce_sell_turnover_pertrans_closecorr10, fac_daily_l2_madlarge_turnover_closecorr10, fac_daily_l2_madsmall_turnover_closecorr10, fac_daily_l2_madlarge_passivebuy_turnover_closecorr10, fac_daily_l2_actnetinflow_turnover_proptinall_openclose_delta, fac_daily_l2_turnover_closecorr10, fac_daily_l2_madl_ntfl_to_proptinall_closecorr10, fac_daily_l2_ceil_board_seconds, fac_daily_l2_mainforce_activesell_turnover_closecorr10, fac_daily_l2_mainforce_netinflow_turnover_closecorr10, fac_daily_l2_mainforce_buy_turnover_pertrans_closecorr10, fac_daily_l2_madsmall_netinflow_turnover_closecorr10, fac_daily_l2_turnover_small_propt_closecorr10, fac_daily_l2_madlarge_buy_turnover_pertrans_closecorr10, fac_daily_l2_small_turnover_active_propt_closecorr10, fac_daily_l2_turnover_madlarge_propt_closecorr10, fac_daily_l2_mainforce_passivesell_turnover_closecorr10, fac_daily_l2_madsmall_buy_turnover_pertrans_closecorr10, fac_daily_l2_madsmall_ntfl_to_actntfl_propt_closecorr10, fac_daily_l2_mainforce_actnetinflow_turnover_proptinall_m10, fac_daily_l2_madlarge_sell_turnover_pertrans_closecorr10, fac_daily_l2_small_netinflow_turnover_actnetinflow_propt_m10, fac_daily_l2_madsmall_psvnetinflow_turnover_proptinall_m10, fac_daily_l2_small_sell_turnover_pertrans_closecorr10,
                                      fac_daily_l2_madlarge_turnover_active_propt_closecorr10,
-                                     fac_daily_l2_mainforce_turnover_closecorr10, fac_daily_l2_contrade_tunrover_activebuy_propt, fac_daily_l2_madsmall_sell_turnover_pertrans_closecorr10,
+                                     fac_daily_l2_mainforce_turnover_closecorr10, fac_daily_l2_madsmall_sell_turnover_pertrans_closecorr10,
                                      fac_daily_l2_small_turnover_closecorr10, fac_daily_l2_madsmall_actnetinflow_turnover_proptinall_m10,
                                      fac_daily_l2_mainforce_turnover_netinflow_propt_closecorr10, fac_daily_l2_turnover_pertrans_closecorr10,
                                      fac_daily_l2_mainforce_netinflow_turnover_proptinall_m10, fac_daily_l2_madsmall_passivesell_turnover_closecorr10,
@@ -258,16 +261,18 @@ fac_daily_l2_actbsdelta_ordercnt >> [fac_daily_l2_madsmall_netinflow_turnover_pr
                                      fac_daily_l2_madlarge_passivesell_turnover_closecorr10, fac_daily_l2_small_turnover_netinflow_propt_closecorr10,
                                      fac_daily_l2_small_actnetinflow_turnover_proptinall_m10, fac_daily_l2_madsmall_activebuy_turnover_closecorr10, fac_daily_l2_madl_actntfl_to_proptinall_msdelta,
                                      fac_daily_l2_small_activebuy_turnover_closecorr10] >> trigger_deap_and_check
-
+fac_daily_l2_actbsdelta_ordercnt >> fac_daily_l2_contrade_tunrover_activebuy_propt >> fac_daily_l2_contrade_tunrover_activebuy_propt_tsz20 >> trigger_deap_and_check
 check_qsdata >> [fac_daily_naor_yoy, fac_daily_em_quote_addposdays10, fac_daily_alpha_zs_8, fac_daily_fastmadivslowma_20_60, fac_quarter_s_fa_assetsturn, fac_daily_netprofit_grow_rate, fac_daily_hc2cl_15_d, fac_daily_close, fac_daily_alpha_zs_1, fac_daily_alpha_zs_2, fac_daily_alpha_zs_5_31, fac_daily_alpha_zs_4, fac_daily_alpha_zs_6, fac_daily_alpha_zs_7, fac_daily_con_npcgrate_2y_roll, fac_daily_hc2cl_5_d, fac_daily_h2c_120_d, fac_daily_l2c_3_d, fac_daily_l2c_120_d, fac_daily_l2c_20_d, fac_daily_h2c_20_d, fac_daily_kd_negative_score, fac_daily_h2c_3_d, fac_daily_hc2cl_3_d, fac_daily_h2l_3_d, fac_daily_h2l_120_d, fac_daily_alpha_zs_5_31_daily, fac_daily_l2c_15_d, fac_daily_h2l_60_d, fac_daily_hc2cl_10_d, fac_daily_h2c_10_d, fac_daily_h2c_5_d, fac_daily_rtn_20, fac_daily_h2l_20_d, fac_daily_hc2cl_60_d, fac_quarter_net_profit_excl_min_int_inc, fac_daily_lnrtn, fac_daily_alpha_zs_3, fac_quarter_tot_cur_assets, fac_daily_beta, fac_daily_h2l_10_d, fac_daily_l2c_10_d, fac_daily_l2c_5_d, fac_daily_fastmadivslowma_20_90, fac_daily_interday_close, fac_daily_random_daily_factor, fac_daily_h2l_15_d, fac_daily_h2c_60_d, fac_daily_hc2cl_120_d, fac_daily_l2c_60_d, fac_daily_hc2cl_20_d, fac_daily_con_eps, fac_quarter_s_qfa_yoynetprofit, fac_daily_fastmadivslowma_20_120, fac_daily_alpha_ZS_5_daily, fac_daily_h2c_15_d, fac_daily_nextday_close, fac_daily_smart_money, fac_daily_h2l_5_d, fac_daily_nw_abs_netbuyshares, l2_data_check, fac_daily_alpha_ZS_5, fac_daily_ln_s_dq_mv, fac_daily_tf_alpha_1, fac_daily_volume_ratio_d_5]
 fac_daily_barracmra_21_12 >> [fac_daily_barra_residvltl_1]
 fac_daily_l2_activebuy_turnover_close_propt >> [fac_daily_l2_actnetinflow_turnover_proptinall_openclose_delta]
+
 fac_daily_l2_contrade_tunrover_activebuy_propt >> [fac_daily_l2_contrade_tunrover_activebuy_propt_tsz20]
 fac_daily_beta >> [fac_daily_delta_rd_kurt]
 fac_daily_nextday_close >> [fac_daily_nextday_close_vol_corr_d10, fac_daily_nextday_dq_turn]
 l2_data_check >> [fac_daily_l2_actbsdelta_ordercnt, fac_daily_level2_act, fac_daily_l2_activebuy_turnover_close_propt, fac_daily_l2v2_close_madlarge_netinflow_turnover, fac_daily_level2_m_13_16_high, fac_daily_l2_madlarge_buy_madlarge_sell_turnover]
 fac_daily_ln_s_dq_mv >> [trigger_Interday_alpha_daily, fac_daily_to_10_d, fac_daily_pegcon, fac_daily_barraliquidity_21, fac_daily_irff_60, fac_daily_irff_120, fac_daily_to_120_d, fac_daily_to_60_d, fac_daily_ncasset2mv, fac_daily_to_20_d, fac_daily_to_3_d, fac_daily_irff_20, fac_daily_l2_ceil_board_seconds, fac_daily_to_15_d, fac_daily_to_5_d]
-
+[fac_daily_level2_m_13_16_high, fac_daily_level2_act,
+ fac_daily_l2v2_close_madlarge_netinflow_turnover, ] >> trigger_deap_and_check
 fac_daily_ln_s_dq_mv >> fac_daily_to_ratio_20to500
-[fac_quarter_s_fa_assetsturn,fac_daily_netprofit_grow_rate,fac_daily_rtn_20,fac_daily_std_20_d,fac_daily_std_60_d,fac_daily_to_20_d,fac_daily_to_60_d,fac_daily_ln_s_dq_mv,fac_daily_irff_20,fac_daily_irff_60,fac_daily_alpha_regbench_ZZ800_252_63_1] >> fac_daily_btop
-
+[fac_quarter_s_fa_assetsturn,fac_daily_netprofit_grow_rate, fac_daily_rtn_20,fac_daily_std_20_d,fac_daily_std_60_d,fac_daily_to_20_d,fac_daily_to_60_d,fac_daily_ln_s_dq_mv,fac_daily_irff_20,fac_daily_irff_60,fac_daily_alpha_regbench_ZZ800_252_63_1] >> fac_daily_btop
+trigger_deap_and_check >> l2_factor_daily_reported

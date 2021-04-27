@@ -211,7 +211,7 @@ fac_daily_l2_actnetinflow_turnover_proptinall_openclose_delta = BashOperator(tas
 fac_daily_l2_contrade_tunrover_activebuy_propt_tsz20 = BashOperator(task_id="fac_daily_l2_contrade_tunrover_activebuy_propt_tsz20", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 3885605 ", dag=dag, pool="factor")
 fac_daily_em_quote_addposdays10 = BashOperator(task_id="fac_daily_em_quote_addposdays10", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5655788 ", dag=dag, pool="factor")
 fac_daily_em_quote_close = BashOperator(task_id="fac_daily_em_quote_close", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5655802 ", dag=dag, pool="factor")
-# 20210226新增em因子
+# 20210226新增风格因子
 fac_daily_naor_yoy = BashOperator(task_id="fac_daily_naor_yoy", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5913912 ", dag=dag, pool="factor")
 fac_daily_to_ratio_20to500 = BashOperator(task_id="fac_daily_to_ratio_20to500", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5913917 ", dag=dag, pool="factor")
 fac_daily_btop = BashOperator(task_id="fac_daily_btop", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5931694 ", dag=dag, pool="factor")

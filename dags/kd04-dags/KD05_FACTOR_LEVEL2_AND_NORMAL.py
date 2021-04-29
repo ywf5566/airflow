@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.contrib.operators.ssh_operator import SSHOperator
 from airflow.operators.dagrun_operator import TriggerDagRunOperator
-
+from airflow.operators.bash_operator import BashOperator
 """ retries参数防止ssh连接不稳定 """
 default_args = {'owner': 'afroot04', 'retries': 2, 'retry_delay': timedelta(minutes=1)}
 dag = DAG('KD05_FACTOR_LEVEL2_AND_NORMAL',
@@ -200,6 +200,8 @@ fac_daily_naor_yoy = SSHOperator(task_id="fac_daily_naor_yoy", ssh_conn_id="kd05
 fac_daily_to_ratio_20to500 = SSHOperator(task_id="fac_daily_to_ratio_20to500", ssh_conn_id="kd05_keydriver", command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 4733133 ", dag=dag, pool="factor")
 fac_daily_btop = SSHOperator(task_id="fac_daily_btop", ssh_conn_id="kd05_keydriver", command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 4779937 ", dag=dag, pool="factor")
 
+# 2021-04-29增加update_universe
+update_universe = BashOperator(task_id="update_universe", bash_command="sh /usr/lib/carter/dbsync/scripts/update_universe.sh ", dag=dag, pool="factor")
 
 trigger_deap_and_check = TriggerDagRunOperator(
     task_id='trigger_deap_and_check',
@@ -237,3 +239,4 @@ fac_daily_ln_s_dq_mv >> [trigger_Interday_alpha_daily, fac_daily_to_10_d, fac_da
 [fac_quarter_s_fa_assetsturn, fac_daily_netprofit_grow_rate, fac_daily_rtn_20, fac_daily_std_20_d, fac_daily_std_60_d,
  fac_daily_to_20_d, fac_daily_to_60_d, fac_daily_ln_s_dq_mv, fac_daily_irff_20, fac_daily_irff_60,
  fac_daily_alpha_regbench_ZZ800_252_63_1] >> fac_daily_btop
+trigger_deap_and_check >> update_universe

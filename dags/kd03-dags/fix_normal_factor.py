@@ -76,7 +76,7 @@ fac_daily_nextday_close = BashOperator(task_id="fac_daily_nextday_close", bash_c
 fac_daily_smart_money = BashOperator(task_id="fac_daily_smart_money", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 3977424 2021-03-01 2021-04-28 False  ", dag=dag, pool="factor")
 fac_daily_h2l_5_d = BashOperator(task_id="fac_daily_h2l_5_d", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 3773787 2021-03-01 2021-04-28 False  ", dag=dag, pool="factor")
 fac_daily_nw_abs_netbuyshares = BashOperator(task_id="fac_daily_nw_abs_netbuyshares", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 5579926 2021-03-01 2021-04-28 False  ", dag=dag, pool="factor")
-l2_data_check = BashOperator(task_id="l2_data_check", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-repo-dep-check.sh check_l2_data 2021-03-01 2021-04-28 False  ", dag=dag, pool="factor")
+l2_data_check = BashOperator(task_id="l2_data_check", bash_command="date", dag=dag, pool="factor")
 fac_daily_alpha_ZS_5 = BashOperator(task_id="fac_daily_alpha_ZS_5", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 56085 2021-03-01 2021-04-28 False  ", dag=dag, pool="factor")
 fac_daily_ln_s_dq_mv = BashOperator(task_id="fac_daily_ln_s_dq_mv", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 2806 2021-03-01 2021-04-28 False  ", dag=dag, pool="factor")
 fac_daily_tf_alpha_1 = BashOperator(task_id="fac_daily_tf_alpha_1", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-exec.sh 415365 2021-03-01 2021-04-28 False  ", dag=dag, pool="factor")

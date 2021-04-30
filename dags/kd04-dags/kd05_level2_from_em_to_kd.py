@@ -7,7 +7,7 @@ from airflow.contrib.operators.ssh_operator import SSHOperator
 default_args = {'owner': 'afroot04', 'retries': 2, 'retry_delay': timedelta(minutes=1)}
 dag = DAG('KD05_level2_from_em_to_kd',
           default_args=default_args,
-          schedule_interval='0 17 * * *',
+          schedule_interval='20 17 * * *',
           catchup=False,
           start_date=datetime(2020, 12, 24, 16, 0))
 

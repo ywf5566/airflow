@@ -39,15 +39,15 @@ dag = DAG('Interday_alpha_daily',
 
 check_qsdata = BashOperator(task_id="check_qsdata", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-repo-dep-check.sh check_qsdata ", dag=dag)
 l2_data_check = BashOperator(task_id="l2_data_check", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-repo-dep-check.sh check_l2_data ", dag=dag)
-daily_feature_cal = BashOperator(task_id="daily_feature_cal", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_daily_cal.sh 2021-04-29 ", dag=dag)
-convert_pkl = BashOperator(task_id="convert_pkl", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_hdf2pkl.sh 2021-04-29 ", dag=dag)
-save_feature_to_es = BashOperator(task_id="save_feature_to_es", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_pkl2es.sh 2021-04-29 ", dag=dag)
-interday_alpha_universe = BashOperator(task_id="interday_alpha_universe", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_universe_ti0.sh 2021-04-29 ", dag=dag)
-interday_alpha_ti0 = BashOperator(task_id="interday_alpha_ti0", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_factor_ti0.sh 2021-04-29 ", dag=dag)
-factor_check_ti0 = BashOperator(task_id="factor_check_ti0", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check_ti0.sh 2021-04-29 ", dag=dag)
+daily_feature_cal = BashOperator(task_id="daily_feature_cal", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_daily_cal.sh ", dag=dag)
+convert_pkl = BashOperator(task_id="convert_pkl", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_hdf2pkl.sh ", dag=dag)
+save_feature_to_es = BashOperator(task_id="save_feature_to_es", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_pkl2es.sh ", dag=dag)
+interday_alpha_universe = BashOperator(task_id="interday_alpha_universe", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_universe_ti0.sh ", dag=dag)
+interday_alpha_ti0 = BashOperator(task_id="interday_alpha_ti0", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_factor_ti0.sh ", dag=dag)
+factor_check_ti0 = BashOperator(task_id="factor_check_ti0", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check_ti0.sh ", dag=dag)
 # 添加午盘因子的task
-realtime_cal_factor = BashOperator(task_id="realtime_cal_factor", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_mid_factor.sh 2021-04-29 ", dag=dag)
-factor_check = BashOperator(task_id="factor_check", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check.sh 2021-04-29 ", dag=dag)
+realtime_cal_factor = BashOperator(task_id="realtime_cal_factor", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_mid_factor.sh ", dag=dag)
+factor_check = BashOperator(task_id="factor_check", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check.sh ", dag=dag)
 
 
 # trigger_kd04_strategy = SSHOperator(task_id="trigger_kd04_strategy", ssh_conn_id="kd04_keydriver", command="source /home/keydriver/airflow/bin/activate;airflow trigger_dag KD05_kd_strategy ", dag=dag)

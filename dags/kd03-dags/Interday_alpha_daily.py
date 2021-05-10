@@ -8,8 +8,7 @@ from monitor.core.send_message import ENV
 from monitor.core.send_message import MSG_HEAD
 from monitor.core.send_message import MSG_LEVEL
 import os
-from airflow.contrib.operators.ssh_operator import SSHOperator
-
+from airflow.operators.dagrun_operator import TriggerDagRunOperator
 
 default_args = {'owner': 'afroot03'}
 
@@ -50,7 +49,7 @@ realtime_cal_factor = BashOperator(task_id="realtime_cal_factor", bash_command="
 factor_check = BashOperator(task_id="factor_check", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/factors_check.sh ", dag=dag)
 
 
-# trigger_kd04_strategy = SSHOperator(task_id="trigger_kd04_strategy", ssh_conn_id="kd04_keydriver", command="source /home/keydriver/airflow/bin/activate;airflow trigger_dag KD05_kd_strategy ", dag=dag)
+trigger_kd_strategy = TriggerDagRunOperator(task_id="trigger_kd_strategy", trigger_dag_id="kd06_kd_strategy", trigger_rule="all_success", dag=dag)
 
 check_qsdata >> l2_data_check >> daily_feature_cal >> convert_pkl >> save_feature_to_es >> interday_alpha_universe >> interday_alpha_ti0 >> factor_check_ti0
-interday_alpha_universe >> realtime_cal_factor >> factor_check
+interday_alpha_universe >> realtime_cal_factor >> factor_check >> trigger_kd_strategy

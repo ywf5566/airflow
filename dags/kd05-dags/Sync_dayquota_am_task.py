@@ -12,7 +12,7 @@ dag = DAG('Sync_dayquota_am_task',
           catchup=False,
           start_date=datetime(2021, 5, 17, 9, 40))
 
-sync_dayquota = BashOperator(task_id="sync_dayquota", bash_bash_command="sh /lib/carter/dbsync/scripts/sync_dayquota.sh ",
+sync_dayquota = BashOperator(task_id="sync_dayquota", bash_command="sh /lib/carter/dbsync/scripts/sync_dayquota.sh ",
                              dag=dag)
 kdalpha_am_start_task = BashOperator(task_id="kdalpha_am_start_task", bash_command="sh /usr/lib/carter/kd_strategy/script/kdalpha_am_start_task.sh prod ", dag=dag)
 kdalpha_daily_am_task = BashOperator(task_id="kdalpha_daily_am_task", bash_command="sh /usr/lib/carter/kd_strategy/script/kdalpha_strategy_daily_am_task.sh prod ", dag=dag)

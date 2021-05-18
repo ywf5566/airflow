@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.contrib.operators.ssh_operator import SSHOperator
 
-default_args = {'owner': 'afroot01', 'retries': 2, 'retry_delay': timedelta(minutes=1),
+default_args = {'owner': 'kd06@keydriver', 'retries': 2, 'retry_delay': timedelta(minutes=1),
                 'start_date': datetime.strptime('2021-05-09 10:09:00', "%Y-%m-%d %H:%M:%S")}
 dag = DAG('kd06_alpha_daily_pm_task', default_args=default_args, schedule_interval=None)
 kd06_kdalpha_pm_start_task = SSHOperator(

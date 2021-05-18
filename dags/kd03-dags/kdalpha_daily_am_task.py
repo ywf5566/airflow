@@ -4,7 +4,7 @@ from datetime import datetime
 from airflow.contrib.operators.ssh_operator import SSHOperator
 
 default_args = {
-    'owner': 'kd06_keydriver'
+    'owner': 'kd06@keydriver'
 }
 
 dag = DAG(

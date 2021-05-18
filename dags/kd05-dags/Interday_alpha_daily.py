@@ -53,5 +53,5 @@ kd05_midday_factor_check = BashOperator(task_id="kd05_midday_factor_check",  bas
 trigger_strategy = TriggerDagRunOperator(task_id="trigger_strategy", trigger_dag_id='Kd_strategy', trigger_rule='all_success', dag=dag)
 
 """ tio任务结束后触发kd05的strategy任务 """
-check_qsdata >> l2_data_check >> daily_feature_cal >> convert_pkl >> save_feature_to_es >> interday_alpha_universe >> interday_alpha_ti0 >> factor_check_ti0 >> trigger_kd04_strategy
+check_qsdata >> l2_data_check >> daily_feature_cal >> convert_pkl >> save_feature_to_es >> interday_alpha_universe >> interday_alpha_ti0 >> factor_check_ti0 >> trigger_strategy
 interday_alpha_universe >> kd05_midday_factor >> kd05_midday_factor_check >> trigger_strategy

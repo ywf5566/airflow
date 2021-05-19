@@ -3,9 +3,9 @@
 from datetime import datetime,timedelta
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
-from airflow.operators.dagrun_operator import TriggerDagRunOperator
+from airflow.contrib.operators.ssh_operator import SSHOperator
 
-default_args = {'owner': 'afroot05', 'retries': 2, 'retry_delay': timedelta(minutes=1)}
+default_args = {'owner': 'afroot04', 'retries': 2, 'retry_delay': timedelta(minutes=1)}
 dag = DAG('synchronize_db_5pm',
           default_args=default_args,
           schedule_interval='0 17 * * *',
@@ -28,9 +28,11 @@ sync_minquota = BashOperator(task_id="sync_minquota",
                              bash_command="sh /usr/lib/carter/dbsync/scripts/sync_minquota.sh ", dag=dag)
 update_qsdata = BashOperator(task_id="update_qsdata",
                              bash_command="sh /usr/lib/carter/dbsync/scripts/update_qsdata.sh ", dag=dag)
-trigger_kd04_factor = TriggerDagRunOperator(task_id="trigger_factor_normal", trigger_dag_id="KD05_FACTOR_LEVEL2_AND_NORMAL", trigger_rule="all_success", dag=dag)
+# 2021-05-19添加fix_adjfactor
+fix_adjfactor = BashOperator(task_id="fix_adjfactor",
+                             bash_command="sh /usr/lib/carter/dbsync/scripts/fix_kdadjfactor.sh ", dag=dag)
 
-
+trigger_kd05_factor = SSHOperator(task_id="trigger_05_factor", ssh_conn_id="kd05@keydriver", command="source /home/keydriver/airflow/bin/activate;airflow trigger_dag Factor_level2_and_normal ")
 eod_table >> [sync_kdb_dayquota_at_5pm]
 sync_kdb_sw_industry >> [check_em_sw_index]
 sync_trading_halt_quota >> [sync_org_id_to_kdcode, sync_stock_adjfactor]
@@ -40,4 +42,5 @@ sync_stock_suspended >> [eod_table]
 check_em_sw_index >> [eod_table]
 em_sw_index >> [check_em_sw_index]
 
-[sync_stock_adjfactor, sync_org_id_to_kdcode, sync_minquota] >> update_qsdata >> trigger_kd04_factor
+sync_stock_adjfactor >> fix_adjfactor
+[sync_stock_adjfactor, sync_org_id_to_kdcode, sync_minquota, fix_adjfactor] >> update_qsdata >> trigger_kd05_factor

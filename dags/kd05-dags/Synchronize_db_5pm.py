@@ -8,9 +8,9 @@ from airflow.operators.dagrun_operator import TriggerDagRunOperator
 default_args = {'owner': 'afroot05', 'retries': 2, 'retry_delay': timedelta(minutes=1)}
 dag = DAG('Synchronize_db_5pm',
           default_args=default_args,
-          schedule_interval=None,
+          schedule_interval="0 17 * * *",
           catchup=False,
-          start_date=datetime(2020, 12, 24, 16, 0))
+          start_date=datetime(2021, 5, 19, 16, 0))
 
 sync_stock_suspended = BashOperator(task_id="sync_stock_suspended",
                                     bash_command="sh /usr/lib/carter/dbsync/scripts/sync_stock_suspended.sh ", dag=dag)

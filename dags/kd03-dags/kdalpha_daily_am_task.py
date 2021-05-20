@@ -17,19 +17,19 @@ dag = DAG(
 # ==========================================================tasks======================================================
 
 kdalpha_am_start_task = SSHOperator(task_id="kd06_kdalpha_am_start_task",
-                                    ssh_conn_id="kd06_keydriver",
+                                    ssh_conn_id="kd06@keydriver",
                                     command="sh /usr/lib/carter/kd_strategy/script/kdalpha_am_start_task.sh dev ",
                                     dag=dag)
 kdalpha_daily_am_task = SSHOperator(task_id="kd06_kdalpha_daily_am_task",
-                                    ssh_conn_id="kd06_keydriver",
+                                    ssh_conn_id="kd06@keydriver",
                                     command="sh /usr/lib/carter/kd_strategy/script/kdalpha_strategy_daily_am_task.sh dev ",
                                     dag=dag)
 kdalpha_strategy_rank_task = SSHOperator(task_id="kd06_kdalpha_strategy_rank_task",
-                                         ssh_conn_id="kd06_keydriver",
+                                         ssh_conn_id="kd06@keydriver",
                                          command="sh /usr/lib/carter/kd_strategy/script/kdalpha_strategy_rank_task.sh dev ",
                                          dag=dag)
 kdalpha_am_end_task = SSHOperator(task_id="kd06_kdalpha_am_end_task",
-                                  ssh_conn_id="kd06_keydriver",
+                                  ssh_conn_id="kd06@keydriver",
                                   command="sh /usr/lib/carter/kd_strategy/script/kdalpha_am_end_task.sh dev ",
                                   dag=dag)
 

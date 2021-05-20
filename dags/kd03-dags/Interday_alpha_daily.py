@@ -51,5 +51,5 @@ factor_check = BashOperator(task_id="factor_check", bash_command="sh /usr/lib/qu
 
 trigger_kd_strategy = TriggerDagRunOperator(task_id="trigger_kd_strategy", trigger_dag_id="kd06_kd_strategy", trigger_rule="all_success", dag=dag)
 
-check_qsdata >> l2_data_check >> daily_feature_cal >> convert_pkl >> save_feature_to_es >> interday_alpha_universe >> interday_alpha_ti0 >> factor_check_ti0
+check_qsdata >> l2_data_check >> daily_feature_cal >> convert_pkl >> save_feature_to_es >> interday_alpha_universe >> interday_alpha_ti0 >> factor_check_ti0 >> trigger_kd_strategy
 interday_alpha_universe >> realtime_cal_factor >> factor_check >> trigger_kd_strategy

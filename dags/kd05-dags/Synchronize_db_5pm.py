@@ -12,6 +12,12 @@ dag = DAG('Synchronize_db_5pm',
           catchup=False,
           start_date=datetime(2021, 5, 19, 16, 0))
 
+# 合并l2解析的任务
+level2_from_em = BashOperator(task_id="level2_from_em",
+                             bash_command="sh /usr/lib/quant/factor/factor_repo/tools/l2code/l2source_file/sync.sh ", dag=dag)
+level2_to_kd = BashOperator(task_id="level2_to_kd",
+                           bash_command="sh /usr/lib/quant/factor/factor_repo/tools/l2code/parser/parser.sh ", dag=dag)
+
 sync_stock_suspended = BashOperator(task_id="sync_stock_suspended",
                                     bash_command="sh /usr/lib/carter/dbsync/scripts/sync_stock_suspended.sh ", dag=dag)
 sync_stock_st = BashOperator(task_id="sync_stock_st",
@@ -53,5 +59,5 @@ sync_stock_st >> [eod_table]
 sync_stock_suspended >> [eod_table]
 check_em_sw_index >> [eod_table]
 em_sw_index >> [check_em_sw_index]
-
+level2_from_em >> level2_to_kd >> trigger_kd04_factor
 [sync_stock_adjfactor, sync_org_id_to_kdcode, sync_minquota] >> update_qsdata >> trigger_kd04_factor

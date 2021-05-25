@@ -8,7 +8,7 @@ from airflow.operators.dagrun_operator import TriggerDagRunOperator
 default_args = {'owner': 'afroot05', 'retries': 2, 'retry_delay': timedelta(minutes=1)}
 dag = DAG('Synchronize_db_5pm',
           default_args=default_args,
-          schedule_interval="0 17 * * *",
+          schedule_interval="0 17 * * 1-5",
           catchup=False,
           start_date=datetime(2021, 5, 19, 16, 0))
 

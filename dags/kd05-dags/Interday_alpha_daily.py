@@ -38,8 +38,9 @@ dag = DAG('Interday_alpha_daily',
           start_date=datetime(2021, 3, 10, 18, 0),
           on_failure_callback=callBack.on_dag_failure)
 
-check_qsdata = BashOperator(task_id="kd05_check_qsdata", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-repo-dep-check.sh check_qsdata ", dag=dag, pool="factor")
-l2_data_check = BashOperator(task_id="kd05_l2_data_check", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-repo-dep-check.sh check_l2_data ", dag=dag, pool="factor")
+# 不需要进行qsdata和l2data的check了（2021-05-25）
+# check_qsdata = BashOperator(task_id="kd05_check_qsdata", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-repo-dep-check.sh check_qsdata ", dag=dag, pool="factor")
+# l2_data_check = BashOperator(task_id="kd05_l2_data_check", bash_command="sh /usr/lib/quant/factor/factor_repo/kdfactor/scripts/factor-repo-dep-check.sh check_l2_data ", dag=dag, pool="factor")
 daily_feature_cal = BashOperator(task_id="kd05_daily_feature_cal", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_daily_cal.sh ", dag=dag, pool="factor")
 convert_pkl = BashOperator(task_id="kd05_convert_pkl", bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_hdf2pkl.sh ", dag=dag,pool="factor")
 save_feature_to_es = BashOperator(task_id="kd05_save_feature_to_es",  bash_command="sh /usr/lib/quant/factor/interday_alpha/scripts/run_pkl2es.sh ", dag=dag, pool="factor")
@@ -53,5 +54,5 @@ kd05_midday_factor_check = BashOperator(task_id="kd05_midday_factor_check",  bas
 trigger_strategy = TriggerDagRunOperator(task_id="trigger_strategy", trigger_dag_id='Kd_strategy', trigger_rule='all_success', dag=dag)
 
 """ tio任务结束后触发kd05的strategy任务 """
-check_qsdata >> l2_data_check >> daily_feature_cal >> convert_pkl >> save_feature_to_es >> interday_alpha_universe >> interday_alpha_ti0 >> factor_check_ti0 >> trigger_strategy
+daily_feature_cal >> convert_pkl >> save_feature_to_es >> interday_alpha_universe >> interday_alpha_ti0 >> factor_check_ti0 >> trigger_strategy
 interday_alpha_universe >> kd05_midday_factor >> kd05_midday_factor_check >> trigger_strategy

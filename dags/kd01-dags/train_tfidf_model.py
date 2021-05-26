@@ -4,7 +4,7 @@ from airflow.operators.bash_operator import BashOperator
 from datetime import datetime
 
 default_args = {
-    'owner': 'keydriver'
+    'owner': 'afroot01'
 }
 # 每个月1号执行---0 0 1 */1 *
 dag = DAG(

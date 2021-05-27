@@ -15,5 +15,5 @@ sync_org_id_to_kdcode_test = BashOperator(task_id="sync_org_id_to_kdcode_test",
                                           bash_command="sh /usr/lib/carter/dbsync/scripts/sync_org_id_to_kdcode.sh ",
                                           dag=dag)
 sync_db = BashOperator(task_id="sync_db", bash_command="sh /usr/lib/carter/dbsync/scripts/sync_db.sh ", dag=dag)
-sync_future_dayquota = BashOperator(task_id="sync_future_dayquota",
-                                    bash_command="sh /usr/lib/carter/dbsync/scripts/sync_fdayquota.sh ", dag=dag)
+# sync_future_dayquota = BashOperator(task_id="sync_future_dayquota",
+#                                     bash_command="sh /usr/lib/carter/dbsync/scripts/sync_fdayquota.sh ", dag=dag)

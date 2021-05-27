@@ -11,7 +11,7 @@ dag = DAG(
     'kd01_news_process',
     default_args=default_args,
     catchup=False,
-    schedule_interval='*/10 * * * *',
+    schedule_interval='*/20 * * * *',
     start_date=datetime(2021, 1, 27, 17, 0)
 )
 # ==========================================================tasks======================================================

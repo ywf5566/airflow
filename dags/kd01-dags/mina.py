@@ -10,7 +10,7 @@ dag = DAG(
     'kd01_mina',
     default_args=default_args,
     description='mina',
-    schedule_interval='*/2 * * * *',
+    schedule_interval='*/4 * * * *',
     start_date=datetime(2020, 12, 22, 13, 30)
 )
 # ==========================================================tasks======================================================

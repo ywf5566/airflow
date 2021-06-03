@@ -7,7 +7,7 @@ default_args = {'owner': 'afroot05', 'retries': 2, 'retry_delay': timedelta(minu
 
 dag = DAG('STAR_sync_data',
           default_args=default_args,
-          schedule_interval='15 17 * * *')
+          schedule_interval='0 17 * * *')
 
 sync_kcb_industry = BashOperator(
     task_id='sync_kcb_industry',
@@ -15,6 +15,12 @@ sync_kcb_industry = BashOperator(
     dag=dag)
 
 sync_STAR_adjfactor = BashOperator(
-    task_id='sync_STAR_adjfactor', bash_command=r'''sh /usr/lib/carter/dbsync/scripts/sync_kcb_adjfactor.sh  ''',
-    trigger_rule='all_success', dag=dag)
+    task_id='sync_STAR_adjfactor',
+    bash_command=r'''sh /usr/lib/carter/dbsync/scripts/sync_kcb_adjfactor.sh  ''',
+    dag=dag)
+
+kcb_quota_check = BashOperator(
+    task_id='kcb_quota_check',
+    bash_command=r'''sh /usr/lib/carter/dbsync/scripts/sync_kcb_quota_check.sh  ''',
+    dag=dag)
 
